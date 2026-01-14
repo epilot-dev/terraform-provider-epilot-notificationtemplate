@@ -1,0 +1,9 @@
+.env
+.env.local
+**/.speakeasy/temp/
+**/.speakeasy/logs/
+.terraform
+.terraform*
+*.tfstate*
+.DS_Store
+original.yaml

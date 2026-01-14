@@ -1,0 +1,306 @@
+lockVersion: 2.0.0
+id: 75731d25-90ec-4ba3-8450-36a352daba22
+management:
+  docChecksum: 1693693b00179028db10f28f1ca752b4
+  docVersion: 1.1.0
+  speakeasyVersion: 1.685.0
+  generationVersion: 2.794.1
+  releaseVersion: 0.10.0
+  configChecksum: 070bae4f7c2906e37c2be4fdabf88daa
+features:
+  terraform:
+    additionalDependencies: 0.1.0
+    constsAndDefaults: 0.3.0
+    core: 3.46.28
+    globalSecurity: 2.82.1
+    globalServerURLs: 2.83.0
+    retries: 2.81.4
+trackedFiles:
+  .gitattributes:
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+  USAGE.md:
+    last_write_checksum: sha1:02c32c9430f37507b3eacd41cdc36f080809e92d
+  examples/data-sources/epilot-notificationtemplate_notification_template/data-source.tf:
+    last_write_checksum: sha1:0e851100061ae5ce0626e684ccf9d1dc2cbc71c5
+  examples/provider/provider.tf:
+    last_write_checksum: sha1:5e36a25f9bce3fd5d287ecdfb44d3365ea09391b
+  examples/resources/epilot-notificationtemplate_notification_template/import-by-string-id.tf:
+    last_write_checksum: sha1:d2af673da20facbc6ad6b88716aac2d027e63b09
+  examples/resources/epilot-notificationtemplate_notification_template/import.sh:
+    last_write_checksum: sha1:868be89ca7e49d060620e2750a1bd65a7ad51a4d
+  examples/resources/epilot-notificationtemplate_notification_template/resource.tf:
+    last_write_checksum: sha1:35c50fd8ac87d5b45f4af6b787d503b5479105aa
+  go.mod:
+    last_write_checksum: sha1:28029e85ab8e892504f68ea905e351049ce7384a
+  internal/planmodifiers/boolplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:133729a9fcd7619649e1c1d40cefcc7f258f7ad2
+  internal/planmodifiers/boolplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:506e2cac3ec4075a8837403860ef0b07e19bc337
+  internal/planmodifiers/float32planmodifier/suppress_diff.go:
+    last_write_checksum: sha1:6c511421c035bb03f9fcc88bcc29f33cf6448b97
+  internal/planmodifiers/float32planmodifier/use_config_value.go:
+    last_write_checksum: sha1:2683d9de3605886cb01438a9015c8e8b02b4e069
+  internal/planmodifiers/float64planmodifier/suppress_diff.go:
+    last_write_checksum: sha1:0caec61cc4bb976ef48438d71f38b375e80450a5
+  internal/planmodifiers/float64planmodifier/use_config_value.go:
+    last_write_checksum: sha1:cc1f1cadfd17a0b9b1e729029dccc03f17d734a5
+  internal/planmodifiers/int32planmodifier/suppress_diff.go:
+    last_write_checksum: sha1:1d463f9c54f08e757b600e813be53af59d8918ce
+  internal/planmodifiers/int32planmodifier/use_config_value.go:
+    last_write_checksum: sha1:019ba1949b00493bf1a866821f9331d50c8a1f09
+  internal/planmodifiers/int64planmodifier/suppress_diff.go:
+    last_write_checksum: sha1:479803095cd8bafcf5edc1ec72fc458453b0f2a0
+  internal/planmodifiers/int64planmodifier/use_config_value.go:
+    last_write_checksum: sha1:b5a63f0c356cd72698e25e1b4f4fc3e29b35d482
+  internal/planmodifiers/listplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:95384c599d2f2ec9819eb6279519a08594693ef7
+  internal/planmodifiers/listplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:c56e2d23520ac7023f800328bb7599e7eba2f202
+  internal/planmodifiers/mapplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:27e841a55f06cf7dec4cdfef5c334f013c25aa08
+  internal/planmodifiers/mapplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:7c2163c8fa4be8e8f7e7499cdb08cc5ed1924b39
+  internal/planmodifiers/numberplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:aadb3b3c699eab6637bef2b816984860b041de44
+  internal/planmodifiers/numberplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:9b92d53a4a5f57e211e6f41ebb6c36cb12357ae6
+  internal/planmodifiers/objectplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:c7a0d9dbd54d46ea0b196ba25d1a4f86be98f18f
+  internal/planmodifiers/objectplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:1f2b6727605c0b56ff2212ab2e2528046f05b157
+  internal/planmodifiers/setplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:a8b5c2cf4080bdedc6c80b283fd80b1601531107
+  internal/planmodifiers/setplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:fe02165f8fd260bbce09f34adfa378376363422f
+  internal/planmodifiers/stringplanmodifier/suppress_diff.go:
+    last_write_checksum: sha1:59a4ea3236141bd1704ac53cf9500b1d4248b981
+  internal/planmodifiers/stringplanmodifier/use_config_value.go:
+    last_write_checksum: sha1:250673402508661f9d12cfa026dc029d5e7855d9
+  internal/planmodifiers/utils/state_check.go:
+    last_write_checksum: sha1:acc38ad698bf4fa8c51aa662076cf57b79024bd5
+  internal/provider/notificationtemplate_data_source.go:
+    last_write_checksum: sha1:2a9b2c2f64c395f51cd16b28f74d08af96fd8554
+  internal/provider/notificationtemplate_data_source_sdk.go:
+    last_write_checksum: sha1:070a48ffd0f40b82c48f04af852917d2f7b34abb
+  internal/provider/notificationtemplate_resource.go:
+    last_write_checksum: sha1:322e60db15b48a3ff3aa43f327de10582debb73b
+  internal/provider/notificationtemplate_resource_sdk.go:
+    last_write_checksum: sha1:08a3c9fe7663fd438aabff4612b12f4a8b231774
+  internal/provider/provider.go:
+    last_write_checksum: sha1:3a6c2f38d6a375b4bfb81de93ae75807dee3272a
+  internal/provider/reflect/diags.go:
+    last_write_checksum: sha1:ace8bc53054bb1d8ee8689acf3e4323de75a6297
+  internal/provider/reflect/doc.go:
+    last_write_checksum: sha1:67814656717ff0d0ff38fd9db09872e28666642b
+  internal/provider/reflect/generic_attr_value.go:
+    last_write_checksum: sha1:33300f91738c9b79e41ea4d8f3581d6800ac06ef
+  internal/provider/reflect/helpers.go:
+    last_write_checksum: sha1:3a2083aa9f84f5a54638803f2225daf86408d360
+  internal/provider/reflect/interfaces.go:
+    last_write_checksum: sha1:e03017ee98ee8d1bd64fde7a025975638bcfaed7
+  internal/provider/reflect/into.go:
+    last_write_checksum: sha1:7a29c6e2fd31069faddc441132ff04a92a6198be
+  internal/provider/reflect/map.go:
+    last_write_checksum: sha1:803a218b09d4d9de46d27a5c0227ed3fc6617f62
+  internal/provider/reflect/number.go:
+    last_write_checksum: sha1:ff756986a30b648c423b9af8996584ffc5983514
+  internal/provider/reflect/options.go:
+    last_write_checksum: sha1:735603671bc13388dca9edeb7fefc0b229196793
+  internal/provider/reflect/outof.go:
+    last_write_checksum: sha1:46f09acf317888545161fc1cd288113bd3836ead
+  internal/provider/reflect/pointer.go:
+    last_write_checksum: sha1:92cc23f30396e1a9204f70ac68ebfe7d58cbb967
+  internal/provider/reflect/primitive.go:
+    last_write_checksum: sha1:8b7708414f8be915065952b31986869feaa2fae6
+  internal/provider/reflect/slice.go:
+    last_write_checksum: sha1:70ce36709e204b74e3ded36c4683df7e48df294f
+  internal/provider/reflect/struct.go:
+    last_write_checksum: sha1:504fa0ca7711df0887f8c265c7acb3774e89afe7
+  internal/provider/typeconvert/date.go:
+    last_write_checksum: sha1:a3da1c5c7a4b8640216a41b217a9fc9e82bd2121
+  internal/provider/typeconvert/datetime.go:
+    last_write_checksum: sha1:a2a20e6785f1e12c3f94c016cbc106e54942e981
+  internal/provider/typeconvert/int.go:
+    last_write_checksum: sha1:c28123f17006dc96a233f916a17c38408e37b71f
+  internal/provider/utils.go:
+    last_write_checksum: sha1:58843791a367939b156fcda8f98b7e7194338c3f
+  internal/sdk/.gitattributes:
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+  internal/sdk/docs/models/operations/option.md:
+    last_write_checksum: sha1:08cfee5d266c9d82987e448f6c98a143aa42c5f8
+  internal/sdk/internal/config/sdkconfiguration.go:
+    last_write_checksum: sha1:a465bdfeecc21750ce762488ced4c22c58fb6c65
+  internal/sdk/internal/hooks/hooks.go:
+    last_write_checksum: sha1:a91520cdb9867a3953169def86c2c00a62ba33c5
+  internal/sdk/internal/utils/contenttype.go:
+    last_write_checksum: sha1:ab5cfd860d02c6e6a37f89e2b5649a9859947fb1
+  internal/sdk/internal/utils/env.go:
+    last_write_checksum: sha1:1e0bcb2d2caed9f3657f1dbc99b55811bed0298c
+  internal/sdk/internal/utils/form.go:
+    last_write_checksum: sha1:0480bdf8cb9afe02e9e9359f54b2897f5a1d66da
+  internal/sdk/internal/utils/headers.go:
+    last_write_checksum: sha1:c42473aad622a84f14ed5c1714f57ad4460a5a67
+  internal/sdk/internal/utils/json.go:
+    last_write_checksum: sha1:97ae482e0ab7d496781aab634b9a1472f3d6e6d3
+  internal/sdk/internal/utils/pathparams.go:
+    last_write_checksum: sha1:1c0b50eb3bf2dfb351c5efbb7bc6c1dcc60b7827
+  internal/sdk/internal/utils/queryparams.go:
+    last_write_checksum: sha1:adf6c203a766e8de8b24b51a1e44ef649abc0c90
+  internal/sdk/internal/utils/requestbody.go:
+    last_write_checksum: sha1:de0857b43255fcf3f2a65a4c27d8e01b45e43be8
+  internal/sdk/internal/utils/retries.go:
+    last_write_checksum: sha1:83b7270f7f7e13c768b77181dd2bfb528e02e698
+  internal/sdk/internal/utils/security.go:
+    last_write_checksum: sha1:bb9cc1870101f6d2a990766f3eb0ea37292f7507
+  internal/sdk/internal/utils/union.go:
+    last_write_checksum: sha1:c818d73ed961ca45d30cf2eb23be3f16c7bacdc2
+  internal/sdk/internal/utils/union_test.go:
+    last_write_checksum: sha1:83ac73c1901de4c6db90f65cf5879163f3d47a00
+  internal/sdk/internal/utils/utils.go:
+    last_write_checksum: sha1:d88d96cc244301d137581432095043f27a3e17b0
+  internal/sdk/models/errors/sdkerror.go:
+    last_write_checksum: sha1:5d65fce5049df7c5113e11c9ccb1e4c46b91901c
+  internal/sdk/models/operations/createnotificationtemplate.go:
+    last_write_checksum: sha1:f41bb5b97af745cc7fa0a5398aac1c7b5ff1b04a
+  internal/sdk/models/operations/deletenotificationtemplate.go:
+    last_write_checksum: sha1:d5c0e313430321c48abcf8afe29727f5e751831f
+  internal/sdk/models/operations/getnotificationtemplate.go:
+    last_write_checksum: sha1:1c7bf5e768894c1b8e61411dd8c4a176d7125dfc
+  internal/sdk/models/operations/listnotificationtemplates.go:
+    last_write_checksum: sha1:dc8bc93eefa2e93546bbe4ac7b1d7cefa03eaf6d
+  internal/sdk/models/operations/options.go:
+    last_write_checksum: sha1:04a13bb334f45b58a7674a018510736191e764e7
+  internal/sdk/models/operations/updatenotificationtemplate.go:
+    last_write_checksum: sha1:c7bcf298e0a2b8faae2fc5e06b0a46b47a87e175
+  internal/sdk/models/shared/createnotificationtemplateinput.go:
+    last_write_checksum: sha1:f1ff1c59acd184803871387eb2bf8dadf0f667d5
+  internal/sdk/models/shared/error.go:
+    last_write_checksum: sha1:7182058a45f74d50357d76e7fad8611497b08cf8
+  internal/sdk/models/shared/notificationtemplate.go:
+    last_write_checksum: sha1:6476e7c74b174f3bda362f631564d21b5716e84a
+  internal/sdk/models/shared/security.go:
+    last_write_checksum: sha1:e8e31b606a77714313987210c34abcc8924489c8
+  internal/sdk/models/shared/updatenotificationtemplateinput.go:
+    last_write_checksum: sha1:5ead02eccd325529c4596ec5ed4188c5e6847fb0
+  internal/sdk/notificationtemplate.go:
+    last_write_checksum: sha1:5461aba37673cb5c272fd3babeb5f45a56ad2a83
+  internal/sdk/optionalnullable/optionalnullable.go:
+    last_write_checksum: sha1:d6aff1a420c31e025ea21d46cf056e305ae76fe8
+  internal/sdk/optionalnullable/optionalnullable_test.go:
+    last_write_checksum: sha1:2e9433eff1651ac77d6678ea76880d9a4980cbc2
+  internal/sdk/retry/config.go:
+    last_write_checksum: sha1:f565273be789ffe0e3c160de1ac72a63cfe67fbe
+  internal/sdk/sdk.go:
+    last_write_checksum: sha1:239626c633159da20e61bcd6e80afa7f59800381
+  internal/sdk/types/bigint.go:
+    last_write_checksum: sha1:49b004005d0461fb04b846eca062b070b0360b31
+  internal/sdk/types/date.go:
+    last_write_checksum: sha1:3036a2e1ed15a1d484c093367eba000c38f384d0
+  internal/sdk/types/datetime.go:
+    last_write_checksum: sha1:196d050af6450669214e9ae4fd28e56263ae2b5d
+  internal/sdk/types/pointers.go:
+    last_write_checksum: sha1:fc2275ea006257ba9ba4ff6f2a2cdb6205371eef
+  internal/validators/DateValidator.go:
+    last_write_checksum: sha1:b336201f680481a54307850db4b5d55862e51f44
+  internal/validators/ExactlyOneChild.go:
+    last_write_checksum: sha1:ab8e18d1763fbd5b262c3e7d917c81ac40ba839f
+  internal/validators/JSONParseValidator.go:
+    last_write_checksum: sha1:77af551821798350f868410aab90352f7ec7b370
+  internal/validators/RFC3339Validator.go:
+    last_write_checksum: sha1:8d9accfc3aa477a74b0f927652f5e2ae3d28061d
+  internal/validators/boolvalidators/not_null.go:
+    last_write_checksum: sha1:89a7362be9d519ed7c9fb7c4989d273a3aa5f279
+  internal/validators/float32validators/not_null.go:
+    last_write_checksum: sha1:4f0a859aa9d7348056c6559bad9ca336104beaef
+  internal/validators/float64validators/not_null.go:
+    last_write_checksum: sha1:f2436a4a1323d58ffcff3b153167c4e463325c12
+  internal/validators/int32validators/not_null.go:
+    last_write_checksum: sha1:d08335af46ab809d0076da8543b3455662fb66a0
+  internal/validators/int64validators/not_null.go:
+    last_write_checksum: sha1:b5bf5b539f2631813ee8771cf00d8ea9744c6dd3
+  internal/validators/listvalidators/not_null.go:
+    last_write_checksum: sha1:11f33dfa3cb1b9eadc7e4a8287518135ddae191e
+  internal/validators/mapvalidators/not_null.go:
+    last_write_checksum: sha1:64117afe6cdb1a0e1b57df970da8df0e18d10442
+  internal/validators/numbervalidators/not_null.go:
+    last_write_checksum: sha1:54d925f13a630f21e14709ce6181e5eaf96bd6e3
+  internal/validators/objectvalidators/not_null.go:
+    last_write_checksum: sha1:5f897f5dcd2686d43c9bd683900572a8d7ef6473
+  internal/validators/setvalidators/not_null.go:
+    last_write_checksum: sha1:de772bcb14615735a8ebd2a9ffaae06f464a86d5
+  internal/validators/stringvalidators/not_null.go:
+    last_write_checksum: sha1:df498b49dd87f9508f3eaec3a63ed0a08ae3c16e
+  main.go:
+    last_write_checksum: sha1:cdd52536bfef7c306907b0ee54903120e66969c8
+  terraform-registry-manifest.json:
+    last_write_checksum: sha1:45b609f3f65164bc2f00b6e2b24faf64627e15b8
+  tools/tools.go:
+    last_write_checksum: sha1:8239addbb5e66af0488adc7dc4aba098e4634d88
+examples:
+  listNotificationTemplates:
+    speakeasy-default-list-notification-templates:
+      parameters:
+        query:
+          q: "name:webhook*"
+          from: 0
+          size: 25
+          sort: "-_created_at"
+          fields: "_id,name,type"
+          hydrate: false
+      responses:
+        "200":
+          application/json: {"results": [{"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}]}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  createNotificationTemplate:
+    speakeasy-default-create-notification-template:
+      requestBody:
+        application/json: {"name": "Webhook delivery failed", "type": "system.webhook_delivery_failed"}
+      responses:
+        "201":
+          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  getNotificationTemplate:
+    speakeasy-default-get-notification-template:
+      parameters:
+        path:
+          id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+      responses:
+        "200":
+          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+  updateNotificationTemplate:
+    speakeasy-default-update-notification-template:
+      parameters:
+        path:
+          id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  deleteNotificationTemplate:
+    speakeasy-default-delete-notification-template:
+      parameters:
+        path:
+          id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+      responses:
+        "200":
+          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+        "401":
+          application/json: {}
+        "500":
+          application/json: {}
+examplesVersion: 1.0.2

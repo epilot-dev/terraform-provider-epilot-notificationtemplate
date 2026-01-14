@@ -1,0 +1,44 @@
+overlay: 1.0.0
+info:
+  title: Overlay notification template API for Terraform provider
+  version: 0.0.1
+actions:
+  # Global retry configuration
+  - target: $
+    update:
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 5000
+          maxInterval: 60000
+          maxElapsedTime: 3600000
+          exponent: 1.5
+        statusCodes:
+          - 5XX
+        retryConnectionErrors: true
+
+  # Map CRUD operations
+  - target: $["paths"]["/v1/templates"]["post"]
+    update:
+      x-speakeasy-entity-operation: NotificationTemplate#create
+
+  - target: $["paths"]["/v1/templates/{id}"]["get"]
+    update:
+      x-speakeasy-entity-operation: NotificationTemplate#get
+
+  - target: $["paths"]["/v1/templates/{id}"]["put"]
+    update:
+      x-speakeasy-entity-operation: NotificationTemplate#update
+
+  - target: $["paths"]["/v1/templates/{id}"]["delete"]
+    update:
+      x-speakeasy-entity-operation: NotificationTemplate#delete
+
+  # Mark entity schema
+  - target: $["components"]["schemas"]["NotificationTemplate"]
+    update:
+      x-speakeasy-entity: NotificationTemplate
+
+  # Remove second security scheme (EpilotOrg) to simplify
+  # - target: $["security"][1]
+  #   remove: true
