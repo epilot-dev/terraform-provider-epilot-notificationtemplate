@@ -15,6 +15,7 @@ speakeasy:
 	curl https://docs.api.epilot.io/notification-template.yaml?v > $(TMP)/openapi.yaml
 	speakeasy overlay apply -s $(TMP)/openapi.yaml -o overlay.yaml > $(TMP)/final.yaml
 	speakeasy generate sdk --lang terraform -o . -s $(TMP)/final.yaml
+	go mod tidy
 
 docs:
 	go generate ./...
