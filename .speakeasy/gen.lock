@@ -1,19 +1,20 @@
 lockVersion: 2.0.0
 id: 75731d25-90ec-4ba3-8450-36a352daba22
 management:
-  docChecksum: ea3f101323a7867c870d6020688c4e51
-  docVersion: 1.4.0
+  docChecksum: fec84002ec7db89404eabda2655b736e
+  docVersion: 1.2.0
   speakeasyVersion: 1.685.0
   generationVersion: 2.794.1
-  releaseVersion: 0.11.0
-  configChecksum: 9d59179e09e37afefaae8b0781495c66
+  releaseVersion: 0.12.1
+  configChecksum: b29f50106c80229c2b137954d2819ac3
 persistentEdits:
-  generation_id: d6cede4f-1c2a-49de-8c5a-f054bdd3a376
-  pristine_commit_hash: 1be6d7e5fe25c535ccf8251b7f9cc332fcea8700
-  pristine_tree_hash: bb45db9a258213872a437eeb117da4b9e038a68a
+  generation_id: 4e4cfb76-883c-4d71-ab45-d095283e8ce0
+  pristine_commit_hash: f878b4c77147df03d3bcdcb174e92615f0bbdf4d
+  pristine_tree_hash: 678fb0a73ff72a64e584d5cec888b0c5b790ff89
 features:
   terraform:
     additionalDependencies: 0.1.0
+    additionalProperties: 0.1.4
     constsAndDefaults: 0.3.0
     core: 3.46.28
     globalSecurity: 2.82.1
@@ -30,24 +31,24 @@ trackedFiles:
     pristine_git_object: 8e707bb129af1da185ba30b4c289b0160819c437
   examples/data-sources/epilot-notificationtemplate_notification_template/data-source.tf:
     id: 7b7536cf7ce5
-    last_write_checksum: sha1:0e851100061ae5ce0626e684ccf9d1dc2cbc71c5
-    pristine_git_object: 6e855645c4faa59d74d89e4d6a40c55ed78e60a9
+    last_write_checksum: sha1:42a977d0e62780ee08fd86da02ecf499fbbdae3e
+    pristine_git_object: ab868e035235cf2466d82f4a38403a2622cc8590
   examples/provider/provider.tf:
     id: 954e955c0240
-    last_write_checksum: sha1:b020638b054a5222db0a2f3c07e8c2c901f3f593
-    pristine_git_object: 82d590552217010ceda15887c02bde6cefea9a8b
+    last_write_checksum: sha1:76b56490c79ae80e91e55ee39a36ef25786fdaba
+    pristine_git_object: 4b539600a81d584e7931cbb37891e8d0fb983e5c
   examples/resources/epilot-notificationtemplate_notification_template/import-by-string-id.tf:
     id: 1acc1fffc8b0
-    last_write_checksum: sha1:d2af673da20facbc6ad6b88716aac2d027e63b09
-    pristine_git_object: 563f3257b6cf28f3031bb927bb1d9c846d821a9b
+    last_write_checksum: sha1:08f1f749648e3b8e7ebf55c5e437c1d324e801f7
+    pristine_git_object: a6e73faa0dc9da2bd2a2db5093e72431b9672eb7
   examples/resources/epilot-notificationtemplate_notification_template/import.sh:
     id: ce2a6109311c
-    last_write_checksum: sha1:868be89ca7e49d060620e2750a1bd65a7ad51a4d
-    pristine_git_object: 0540696f56709ba2a3b2954874f3c1efa124ab90
+    last_write_checksum: sha1:9b0b8d96bdb42f327ecfbdf013b8edb552aaff4a
+    pristine_git_object: f63d522e7f5294cb2fa2f3784932085c316e9ddb
   examples/resources/epilot-notificationtemplate_notification_template/resource.tf:
     id: 1bb30d0e41af
-    last_write_checksum: sha1:35c50fd8ac87d5b45f4af6b787d503b5479105aa
-    pristine_git_object: 61479787db3471948d727eea7f4c1066e944d8ba
+    last_write_checksum: sha1:eea904be87ead7d121fead40d4b9a6ccb674c6b0
+    pristine_git_object: d52e245739214d63dfd4083568f15273988d3195
   go.mod:
     id: c47645c391ad
     last_write_checksum: sha1:28029e85ab8e892504f68ea905e351049ce7384a
@@ -146,24 +147,24 @@ trackedFiles:
     pristine_git_object: 0ea64fbeb1fd7709d7241a8e06d34bfe9d0323d3
   internal/provider/notificationtemplate_data_source.go:
     id: 9bc0bbc2d108
-    last_write_checksum: sha1:2a9b2c2f64c395f51cd16b28f74d08af96fd8554
-    pristine_git_object: 73b9dcdb02a1014b6cb56dd97a02d0407a7292ef
+    last_write_checksum: sha1:fc8f7d0069bd82649ec95a4d4ffd68b803a59066
+    pristine_git_object: 2b6740cac920d98128bd82dd4e7241feb7990b4f
   internal/provider/notificationtemplate_data_source_sdk.go:
     id: f16cd9555dc9
-    last_write_checksum: sha1:070a48ffd0f40b82c48f04af852917d2f7b34abb
-    pristine_git_object: 369239ff13c4ae8d15373e8f991c7b44bc3428dd
+    last_write_checksum: sha1:f9c39c5b81c05463dbf16c905fc5e8778ab30352
+    pristine_git_object: 1f118a92dbd917f96c15b482b081ccbf5305fd63
   internal/provider/notificationtemplate_resource.go:
     id: 288a75e19257
-    last_write_checksum: sha1:322e60db15b48a3ff3aa43f327de10582debb73b
-    pristine_git_object: 6ad97115450941690c2c541e110e2baef8750720
+    last_write_checksum: sha1:c02f9a1616397bb7a30e05400282aa3c64ad8f13
+    pristine_git_object: f8325908b147c1f87d1cded612633a1c807c036b
   internal/provider/notificationtemplate_resource_sdk.go:
     id: cf3e16789f59
-    last_write_checksum: sha1:08a3c9fe7663fd438aabff4612b12f4a8b231774
-    pristine_git_object: 2b5a144d16d7e7d2d9050688fbc96555ed72ea41
+    last_write_checksum: sha1:cbdb4044527ed7509fe255e62ad742554ce9fc2a
+    pristine_git_object: 122e2ccc895cf1abb564c2598cf32637931f94e0
   internal/provider/provider.go:
     id: 1e7e86841cf3
-    last_write_checksum: sha1:3a6c2f38d6a375b4bfb81de93ae75807dee3272a
-    pristine_git_object: 6441f6ead7892cf341289e6646fc182306943080
+    last_write_checksum: sha1:52e364e32e0ba955e7c9052595f6dfe31d5935b3
+    pristine_git_object: 1e3295a092e8d517e99b962410451a2607c5cd2d
   internal/provider/reflect/diags.go:
     id: 35b6b44972e2
     last_write_checksum: sha1:ace8bc53054bb1d8ee8689acf3e4323de75a6297
@@ -232,10 +233,18 @@ trackedFiles:
     id: c44fcd78fccc
     last_write_checksum: sha1:c28123f17006dc96a233f916a17c38408e37b71f
     pristine_git_object: 54763e7a7555fae6d8bf51c4590220ff610202aa
+  internal/provider/types/acl.go:
+    id: f356aa119551
+    last_write_checksum: sha1:4f989861a6d3cfbd0590b2c8edb2845be37c7e83
+    pristine_git_object: f0dc51f451d7ce4f035d86ca9651efe894fbadac
+  internal/provider/types/entity_owner.go:
+    id: 6f97c680e0e6
+    last_write_checksum: sha1:472f53ebe4c28be4d8201c62cabd67d74ecd01b5
+    pristine_git_object: 6a5507bdb03d1946f65d254232bb266369c6ed4c
   internal/provider/utils.go:
     id: 312d50f148af
-    last_write_checksum: sha1:58843791a367939b156fcda8f98b7e7194338c3f
-    pristine_git_object: b2d789774c393f65b50cd82995a7fd086ededa23
+    last_write_checksum: sha1:048747d6f3ea8925e24a8c36a2171eaecfd26f1c
+    pristine_git_object: 77c689b674d2cd99a66a9efeb74c05a390004786
   internal/sdk/.gitattributes:
     id: 1ea4c4e0a39d
     last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
@@ -308,58 +317,110 @@ trackedFiles:
     id: 19b5a8d3586b
     last_write_checksum: sha1:5d65fce5049df7c5113e11c9ccb1e4c46b91901c
     pristine_git_object: c633d568d96b5297c7d2edfc9d22fc717428edf1
+  internal/sdk/models/operations/createnotification.go:
+    id: 69938e57104e
+    last_write_checksum: sha1:bb15a4901753a627a570b196ec76a1c7ba00a696
+    pristine_git_object: c761ede5f8c1d6f0aa73a21b95fc80942d35a21c
   internal/sdk/models/operations/createnotificationtemplate.go:
     id: 0f5436689523
-    last_write_checksum: sha1:f41bb5b97af745cc7fa0a5398aac1c7b5ff1b04a
-    pristine_git_object: 88e373109bc0848d6445198c8733942f0017084e
+    last_write_checksum: sha1:942d5c8ef767ba953e99770dd891be9acee18420
+    pristine_git_object: 12d6b063c850f5549dc8326916e9f626952fb470
   internal/sdk/models/operations/deletenotificationtemplate.go:
     id: 4de6534dbe12
-    last_write_checksum: sha1:d5c0e313430321c48abcf8afe29727f5e751831f
-    pristine_git_object: a459f1a394826f46fc28cd62f11742881fa1a70f
+    last_write_checksum: sha1:a8e770c19f4d6dae6e89d5bd886192a739966328
+    pristine_git_object: 20824f2d2b07382358ff093ce1041470f285eb43
+  internal/sdk/models/operations/getnotification.go:
+    id: b77869571989
+    last_write_checksum: sha1:dc9e7c2e83e77cc5dee1bb67c5247669badaa8aa
+    pristine_git_object: 0e84e318c7c695ac51f6bd9dadf2cfe7c8838fc1
+  internal/sdk/models/operations/getnotifications.go:
+    id: b326630346fc
+    last_write_checksum: sha1:41379dbe9bae74af1c76f39e6fd2b630cd339c54
+    pristine_git_object: 9938fdaf0b7c9e25154d29bccde028088aeffc65
+  internal/sdk/models/operations/getnotificationsv2.go:
+    id: 93acf5857aa9
+    last_write_checksum: sha1:63ab2a05d59bf047f83e0163f1d11f7c8c436432
+    pristine_git_object: c192d6109ea9eedeb76e018dedb92d9831a28526
   internal/sdk/models/operations/getnotificationtemplate.go:
     id: 1927748f8761
-    last_write_checksum: sha1:1c7bf5e768894c1b8e61411dd8c4a176d7125dfc
-    pristine_git_object: e7bb03d12d7a6375c26e08d7b9961afd325adc67
+    last_write_checksum: sha1:95677dafdc406ae0b80308d0bca9823ad6dda798
+    pristine_git_object: 8472e0285313071a48fcbb6de2bca3b446a305fd
+  internal/sdk/models/operations/gettotalunread.go:
+    id: 4e2e414743c3
+    last_write_checksum: sha1:d63b8b1d8abc16f85620b9b99166e28ade2c6b1e
+    pristine_git_object: 6e64ecbfd92f7eda500c1f67812aa7cb4bcac883
   internal/sdk/models/operations/listnotificationtemplates.go:
     id: 130d71cfc50f
-    last_write_checksum: sha1:dc8bc93eefa2e93546bbe4ac7b1d7cefa03eaf6d
-    pristine_git_object: 39631115db4cf0a81be88960be548a54d595ac39
+    last_write_checksum: sha1:d731f6d52165bdbfb9f576084e85be615921abca
+    pristine_git_object: 041704f0771a1ac0b91d99ec34d2b24b4ecfc33c
+  internal/sdk/models/operations/markallasread.go:
+    id: 766089744cd5
+    last_write_checksum: sha1:bcb3e326eac30912186d8131a9084aa5ce0c4a76
+    pristine_git_object: 4711a2c5e0b11fb16fbe1202a5c74dc7649392a9
+  internal/sdk/models/operations/markasread.go:
+    id: b134c0d305ba
+    last_write_checksum: sha1:3433ff7ce697469b9fe04ab968d075068a5da295
+    pristine_git_object: c8c4922b6a0b09c7751a93a26d3f7a918cfe94d6
   internal/sdk/models/operations/options.go:
     id: 6d0d29414e00
-    last_write_checksum: sha1:04a13bb334f45b58a7674a018510736191e764e7
-    pristine_git_object: 873c13b725c876d5286b91906c20649dad12b3c6
+    last_write_checksum: sha1:41339a1625693a44194af5f8ca2f664be3e0f469
+    pristine_git_object: 30d5f16756c97fc1f5d610dd5619e75acbbe7b12
   internal/sdk/models/operations/patchnotificationtemplate.go:
     id: c2c570dbc4d3
-    last_write_checksum: sha1:5613139964dfa2cb0adb91a2fbf5770069a7323b
-    pristine_git_object: b15a3145a848a324e9f9341e40c700c53a2dc160
+    last_write_checksum: sha1:766840f55eea5c203519520c7cd790dba2d59d8b
+    pristine_git_object: 28eb4e02cfa05b28d55c3167535138f1e73814cd
   internal/sdk/models/operations/updatenotificationtemplate.go:
     id: 7cf1c6013a3c
-    last_write_checksum: sha1:c7bcf298e0a2b8faae2fc5e06b0a46b47a87e175
-    pristine_git_object: 3cbdca95fbe52df2b645a96c551dea696950c3db
+    last_write_checksum: sha1:79ce3918215b69c091c1d361a3c7a65b0b2a9068
+    pristine_git_object: 59186240c6e47b0f518cbe7d5a0ba1b8fd2751fe
   internal/sdk/models/shared/createnotificationtemplateinput.go:
     id: a3e325834f6c
-    last_write_checksum: sha1:f1ff1c59acd184803871387eb2bf8dadf0f667d5
-    pristine_git_object: c0c61f5fb54dbb4f49f40e8bf0bcc563ba8f4615
+    last_write_checksum: sha1:bf37bd62886930c679b83003817ff0a3165aa7f2
+    pristine_git_object: 5979321ea43d2bd26953134f9b68782c2d956227
+  internal/sdk/models/shared/entityoperation.go:
+    id: 0f261658779b
+    last_write_checksum: sha1:64b65514d8d675c431d2b8d6db53c1223717e933
+    pristine_git_object: f6cdef2d2d908d34263be9440bcc7b22d9a2d84f
+  internal/sdk/models/shared/entityowner.go:
+    id: c617e4434acc
+    last_write_checksum: sha1:035051b3d898e7b9384bf02f299d2c013c9a816d
+    pristine_git_object: f4f043c882d9a1b1299e723efdb68630eacecc13
   internal/sdk/models/shared/error.go:
     id: a388f67481aa
-    last_write_checksum: sha1:7182058a45f74d50357d76e7fad8611497b08cf8
-    pristine_git_object: a0811cde3c7a4577fc6067ee58cf05972e21e39c
+    last_write_checksum: sha1:295451f58fe8a4fb325e564dfdfac863a7713ca2
+    pristine_git_object: a8cf2c1af30c25fc9a6f330feef67fe3459a031d
+  internal/sdk/models/shared/notification.go:
+    id: aeaf6c9a9f8a
+    last_write_checksum: sha1:13a472a5c325431deacf24b0256b2a752e38d69b
+    pristine_git_object: 63acbdc92f91527eb169b9077b190eb354cb79cf
+  internal/sdk/models/shared/notificationcallercontext.go:
+    id: 8a001cbbf9b0
+    last_write_checksum: sha1:606b58086b86cba760706f0147a0e88fb0bdd2aa
+    pristine_git_object: 1064e7c34a8b40deab806b04b3492b1f6c58b575
+  internal/sdk/models/shared/notificationitem.go:
+    id: 75ddd2badcad
+    last_write_checksum: sha1:48043ea79736e22f841e45576dd1a9bc67d824f0
+    pristine_git_object: 3122c06a5fb4704891d174832b649bbce1e791aa
   internal/sdk/models/shared/notificationtemplate.go:
     id: 99719423a283
-    last_write_checksum: sha1:6476e7c74b174f3bda362f631564d21b5716e84a
-    pristine_git_object: 79c3330ceef8e1f313bf70ef1e8787ec000ceeab
+    last_write_checksum: sha1:a5d322284978052726a116af35f4418e571cf0ba
+    pristine_git_object: e206d1beeecc24ccbd3a356947c7e4519bae6652
+  internal/sdk/models/shared/notificationtemplatelistresponse.go:
+    id: 208e01491a51
+    last_write_checksum: sha1:14309c2329d7add7c8d5dc8c92ca54dbb612d230
+    pristine_git_object: 410e3d3ecfe3489d18bec2c87c01cad92332d5a0
   internal/sdk/models/shared/security.go:
     id: 9098af98367e
-    last_write_checksum: sha1:e8e31b606a77714313987210c34abcc8924489c8
-    pristine_git_object: d393ff12dbea8bb4babdc7dcb591ab9f4ec30bb0
+    last_write_checksum: sha1:4b99dae59844b25a5acc4fa1a73ca1e623f2e08e
+    pristine_git_object: 37f7f47928a46b475865d6fb81c865dcc0bf27ce
   internal/sdk/models/shared/updatenotificationtemplateinput.go:
     id: 3a2ecf4631d6
-    last_write_checksum: sha1:5ead02eccd325529c4596ec5ed4188c5e6847fb0
-    pristine_git_object: 394be33821a4cdea89f651a67a871a330f791318
-  internal/sdk/notificationtemplate.go:
-    id: 2675284c37bc
-    last_write_checksum: sha1:83c82abe46765e4a1582be1254fe93dad1997e39
-    pristine_git_object: caaccbd6f56e55e8013e70e41d4ec9fab56c0d32
+    last_write_checksum: sha1:ba4f7c20304185813890f3cdaf0272db80e0b3ef
+    pristine_git_object: ae5454781ee5ba23ab07324c851e9488fa30b33e
+  internal/sdk/notification.go:
+    id: f2550bbf67f4
+    last_write_checksum: sha1:6b99b0cb3a072c2d5abd5efb9af643c4cd96ad98
+    pristine_git_object: b18f224bc78331ca4878f8e065359781288b22d8
   internal/sdk/optionalnullable/optionalnullable.go:
     id: 4b83aa3f3df3
     last_write_checksum: sha1:d6aff1a420c31e025ea21d46cf056e305ae76fe8
@@ -374,8 +435,12 @@ trackedFiles:
     pristine_git_object: aa809fccb3445b1e2530a979dad620512f50e70f
   internal/sdk/sdk.go:
     id: 02d7190ee502
-    last_write_checksum: sha1:928b5d335803645af933a965b99776987d1987a3
-    pristine_git_object: 2297dcf3ef8b5df6f54d1cb53924b47a3d7eea13
+    last_write_checksum: sha1:772c445ce4ee1385f676b26432c726b8256e6c1b
+    pristine_git_object: 9e4132805fbfa03943999a7695cdfc78aef14254
+  internal/sdk/template.go:
+    id: 0ebe2c7568c6
+    last_write_checksum: sha1:546f17a4615c37fade0d08cd33814c9e5875e82d
+    pristine_git_object: b29466aacb8b1c8df26fb222fb8a4805ec7f29d7
   internal/sdk/types/bigint.go:
     id: fc530b70337e
     last_write_checksum: sha1:49b004005d0461fb04b846eca062b070b0360b31
@@ -477,22 +542,22 @@ examples:
           hydrate: false
       responses:
         "200":
-          application/json: {"results": [{"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}]}
+          application/json: {}
         "401":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
   createNotificationTemplate:
     speakeasy-default-create-notification-template:
       requestBody:
         application/json: {"name": "Webhook delivery failed", "type": "system.webhook_delivery_failed"}
       responses:
         "201":
-          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+          application/json: {}
         "400":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
   getNotificationTemplate:
     speakeasy-default-get-notification-template:
       parameters:
@@ -500,11 +565,11 @@ examples:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       responses:
         "200":
-          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+          application/json: {}
         "401":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
   updateNotificationTemplate:
     speakeasy-default-update-notification-template:
       parameters:
@@ -514,11 +579,11 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+          application/json: {}
         "400":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
   deleteNotificationTemplate:
     speakeasy-default-delete-notification-template:
       parameters:
@@ -526,11 +591,11 @@ examples:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       responses:
         "200":
-          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+          application/json: {}
         "401":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
   patchNotificationTemplate:
     speakeasy-default-patch-notification-template:
       parameters:
@@ -540,9 +605,42 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"_id": "b5fd5b8f-4e98-4fca-9b91-13b7c849d550", "_schema": "notification_template", "_title": "Webhook delivery failed", "_org": "739224", "_tags": ["default"], "name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "heading": "My heading", "message": "My message"}
+          application/json: {}
         "400":
-          application/json: {}
+          application/json: {"message": "<value>"}
         "500":
-          application/json: {}
+          application/json: {"message": "<value>"}
+  getNotificationsV2:
+    speakeasy-default-get-notifications-v2:
+      responses:
+        "200":
+          application/json: {"cursor": "eyJjcmVhd", "total": 1, "total_unread": 1, "results": [{"id": 123456789, "read_state": false, "type": "workflow", "redirect_url": "https://epilot.cloud", "organization_id": "206801", "title": {"en": "My custom notification", "de": "Meine benutzerdefinierte Aktivität"}, "message": {"en": "{{caller}} did something with {{contact.entity.id}} {{branch.name}}.", "de": "{{caller}} habe etwas damit gemacht {{contact.entity.id}} {{branch.name}}."}, "payload": {"entity": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "schema": "contact"}}, "caller": {"EpilotAuth": {"token": {"sub": "476e9b48-42f4-4234-a2b0-4668b34626ce", "email": "n.ahmad@epilot.cloud", "cognito:username": "n.ahmad@epilot.cloud", "custom:ivy_user_id": "10006129"}}}, "operations": [{"entity": "2ad4d6fb-924f-4567-ba55-69e8b1295b2f", "operation": "updateEntity", "params": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "slug": "contact"}, "payload": {"_schema": "contact", "_org": "123", "status": "Inactive"}}], "force_notify_users": {"12345": {"email": false, "in_app": false}}}]}
+  createNotification:
+    speakeasy-default-create-notification:
+      requestBody:
+        application/json: {"type": "workflow", "redirect_url": "https://epilot.cloud", "organization_id": "206801", "title": {"en": "My custom notification", "de": "Meine benutzerdefinierte Aktivität"}, "message": {"en": "{{caller}} did something with {{contact.entity.id}} {{branch.name}}.", "de": "{{caller}} habe etwas damit gemacht {{contact.entity.id}} {{branch.name}}."}, "payload": {"entity": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "schema": "contact"}}, "caller": {"EpilotAuth": {"token": {"sub": "476e9b48-42f4-4234-a2b0-4668b34626ce", "email": "n.ahmad@epilot.cloud", "cognito:username": "n.ahmad@epilot.cloud", "custom:ivy_user_id": "10006129"}}}, "operations": [{"entity": "adb396eb-dd2f-46b9-a925-fb5c96a71b7e", "operation": "updateEntity", "params": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "slug": "contact"}, "payload": {"_schema": "contact", "_org": "123", "status": "Inactive"}}], "force_notify_users": {"12345": {"email": false, "in_app": false}}, "read_state": false, "visibility_user_ids": ["1", "2", "3", "4", "5"]}
+  getNotifications:
+    speakeasy-default-get-notifications:
+      responses:
+        "200":
+          application/json: {"total": 1, "total_unread": 1, "results": [{"id": 123456789, "read_state": false, "type": "workflow", "redirect_url": "https://epilot.cloud", "organization_id": "206801", "title": {"en": "My custom notification", "de": "Meine benutzerdefinierte Aktivität"}, "message": {"en": "{{caller}} did something with {{contact.entity.id}} {{branch.name}}.", "de": "{{caller}} habe etwas damit gemacht {{contact.entity.id}} {{branch.name}}."}, "payload": {"entity": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "schema": "contact"}}, "caller": {"EpilotAuth": {"token": {"sub": "476e9b48-42f4-4234-a2b0-4668b34626ce", "email": "n.ahmad@epilot.cloud", "cognito:username": "n.ahmad@epilot.cloud", "custom:ivy_user_id": "10006129"}}}, "operations": [{"entity": "f8825540-1768-42d0-a615-4ec8a17d7b9b", "operation": "updateEntity", "params": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "slug": "contact"}, "payload": {"_schema": "contact", "_org": "123", "status": "Inactive"}}], "force_notify_users": {"12345": {"email": false, "in_app": false}}}]}
+  getNotification:
+    speakeasy-default-get-notification:
+      parameters:
+        path:
+          id: 6119.89
+      responses:
+        "200":
+          application/json: {"id": 123456789, "read_state": false, "type": "workflow", "redirect_url": "https://epilot.cloud", "organization_id": "206801", "title": {"en": "My custom notification", "de": "Meine benutzerdefinierte Aktivität"}, "message": {"en": "{{caller}} did something with {{contact.entity.id}} {{branch.name}}.", "de": "{{caller}} habe etwas damit gemacht {{contact.entity.id}} {{branch.name}}."}, "payload": {"entity": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "schema": "contact"}}, "caller": {"EpilotAuth": {"token": {"sub": "476e9b48-42f4-4234-a2b0-4668b34626ce", "email": "n.ahmad@epilot.cloud", "cognito:username": "n.ahmad@epilot.cloud", "custom:ivy_user_id": "10006129"}}}, "operations": [{"entity": "c22b344b-e131-4a15-a716-539e95052d58", "operation": "updateEntity", "params": {"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "slug": "contact"}, "payload": {"_schema": "contact", "_org": "123", "status": "Inactive"}}], "force_notify_users": {"12345": {"email": false, "in_app": false}}}
+  markAllAsRead: {}
+  markAsRead:
+    speakeasy-default-mark-as-read:
+      parameters:
+        path:
+          id: 543592
+  getTotalUnread:
+    speakeasy-default-get-total-unread:
+      responses:
+        "200":
+          text/plain: "<value>"
 examplesVersion: 1.0.2

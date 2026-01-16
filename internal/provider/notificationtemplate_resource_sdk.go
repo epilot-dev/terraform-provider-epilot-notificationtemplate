@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/typeconvert"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -15,9 +16,36 @@ func (r *NotificationTemplateResourceModel) RefreshFromSharedNotificationTemplat
 	var diags diag.Diagnostics
 
 	if resp != nil {
+		if resp.ACL == nil {
+			r.ACL = nil
+		} else {
+			r.ACL = &tfTypes.ACL{}
+			r.ACL.Delete = make([]types.String, 0, len(resp.ACL.Delete))
+			for _, v := range resp.ACL.Delete {
+				r.ACL.Delete = append(r.ACL.Delete, types.StringValue(v))
+			}
+			r.ACL.Edit = make([]types.String, 0, len(resp.ACL.Edit))
+			for _, v := range resp.ACL.Edit {
+				r.ACL.Edit = append(r.ACL.Edit, types.StringValue(v))
+			}
+			r.ACL.View = make([]types.String, 0, len(resp.ACL.View))
+			for _, v := range resp.ACL.View {
+				r.ACL.View = append(r.ACL.View, types.StringValue(v))
+			}
+		}
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
-		r.ID = types.StringValue(resp.ID)
+		r.ID = types.StringPointerValue(resp.ID)
 		r.Org = types.StringPointerValue(resp.Org)
+		r.Owners = []tfTypes.EntityOwner{}
+
+		for _, ownersItem := range resp.Owners {
+			var owners tfTypes.EntityOwner
+
+			owners.OrgID = types.StringPointerValue(ownersItem.OrgID)
+			owners.UserID = types.StringPointerValue(ownersItem.UserID)
+
+			r.Owners = append(r.Owners, owners)
+		}
 		r.Schema = types.StringPointerValue(resp.Schema)
 		r.Tags = make([]types.String, 0, len(resp.Tags))
 		for _, v := range resp.Tags {
@@ -25,10 +53,16 @@ func (r *NotificationTemplateResourceModel) RefreshFromSharedNotificationTemplat
 		}
 		r.Title = types.StringPointerValue(resp.Title)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
-		r.Heading = types.StringPointerValue(resp.Heading)
+		r.ActionLabel = types.StringPointerValue(resp.ActionLabel)
+		r.ActionURL = types.StringPointerValue(resp.ActionURL)
+		r.CreatedBy = types.StringPointerValue(resp.CreatedBy)
 		r.Message = types.StringPointerValue(resp.Message)
-		r.Name = types.StringValue(resp.Name)
-		r.Type = types.StringValue(resp.Type)
+		r.Name = types.StringPointerValue(resp.Name)
+		r.NotificationTitle = types.StringPointerValue(resp.NotificationTitle)
+		r.Style = types.StringPointerValue(resp.Style)
+		r.SystemTemplate = types.BoolPointerValue(resp.SystemTemplate)
+		r.Type = types.StringPointerValue(resp.Type)
+		r.UpdatedBy = types.StringPointerValue(resp.UpdatedBy)
 	}
 
 	return diags
@@ -90,17 +124,35 @@ func (r *NotificationTemplateResourceModel) ToSharedCreateNotificationTemplateIn
 	var typeVar string
 	typeVar = r.Type.ValueString()
 
-	heading := new(string)
-	if !r.Heading.IsUnknown() && !r.Heading.IsNull() {
-		*heading = r.Heading.ValueString()
+	notificationTitle := new(string)
+	if !r.NotificationTitle.IsUnknown() && !r.NotificationTitle.IsNull() {
+		*notificationTitle = r.NotificationTitle.ValueString()
 	} else {
-		heading = nil
+		notificationTitle = nil
 	}
 	message := new(string)
 	if !r.Message.IsUnknown() && !r.Message.IsNull() {
 		*message = r.Message.ValueString()
 	} else {
 		message = nil
+	}
+	actionLabel := new(string)
+	if !r.ActionLabel.IsUnknown() && !r.ActionLabel.IsNull() {
+		*actionLabel = r.ActionLabel.ValueString()
+	} else {
+		actionLabel = nil
+	}
+	actionURL := new(string)
+	if !r.ActionURL.IsUnknown() && !r.ActionURL.IsNull() {
+		*actionURL = r.ActionURL.ValueString()
+	} else {
+		actionURL = nil
+	}
+	style := new(string)
+	if !r.Style.IsUnknown() && !r.Style.IsNull() {
+		*style = r.Style.ValueString()
+	} else {
+		style = nil
 	}
 	title := new(string)
 	if !r.Title.IsUnknown() && !r.Title.IsNull() {
@@ -113,12 +165,15 @@ func (r *NotificationTemplateResourceModel) ToSharedCreateNotificationTemplateIn
 		tags = append(tags, r.Tags[tagsIndex].ValueString())
 	}
 	out := shared.CreateNotificationTemplateInput{
-		Name:    name,
-		Type:    typeVar,
-		Heading: heading,
-		Message: message,
-		Title:   title,
-		Tags:    tags,
+		Name:              name,
+		Type:              typeVar,
+		NotificationTitle: notificationTitle,
+		Message:           message,
+		ActionLabel:       actionLabel,
+		ActionURL:         actionURL,
+		Style:             style,
+		Title:             title,
+		Tags:              tags,
 	}
 
 	return &out, diags
@@ -133,23 +188,35 @@ func (r *NotificationTemplateResourceModel) ToSharedUpdateNotificationTemplateIn
 	} else {
 		name = nil
 	}
-	typeVar := new(string)
-	if !r.Type.IsUnknown() && !r.Type.IsNull() {
-		*typeVar = r.Type.ValueString()
+	notificationTitle := new(string)
+	if !r.NotificationTitle.IsUnknown() && !r.NotificationTitle.IsNull() {
+		*notificationTitle = r.NotificationTitle.ValueString()
 	} else {
-		typeVar = nil
-	}
-	heading := new(string)
-	if !r.Heading.IsUnknown() && !r.Heading.IsNull() {
-		*heading = r.Heading.ValueString()
-	} else {
-		heading = nil
+		notificationTitle = nil
 	}
 	message := new(string)
 	if !r.Message.IsUnknown() && !r.Message.IsNull() {
 		*message = r.Message.ValueString()
 	} else {
 		message = nil
+	}
+	actionLabel := new(string)
+	if !r.ActionLabel.IsUnknown() && !r.ActionLabel.IsNull() {
+		*actionLabel = r.ActionLabel.ValueString()
+	} else {
+		actionLabel = nil
+	}
+	actionURL := new(string)
+	if !r.ActionURL.IsUnknown() && !r.ActionURL.IsNull() {
+		*actionURL = r.ActionURL.ValueString()
+	} else {
+		actionURL = nil
+	}
+	style := new(string)
+	if !r.Style.IsUnknown() && !r.Style.IsNull() {
+		*style = r.Style.ValueString()
+	} else {
+		style = nil
 	}
 	title := new(string)
 	if !r.Title.IsUnknown() && !r.Title.IsNull() {
@@ -162,12 +229,14 @@ func (r *NotificationTemplateResourceModel) ToSharedUpdateNotificationTemplateIn
 		tags = append(tags, r.Tags[tagsIndex].ValueString())
 	}
 	out := shared.UpdateNotificationTemplateInput{
-		Name:    name,
-		Type:    typeVar,
-		Heading: heading,
-		Message: message,
-		Title:   title,
-		Tags:    tags,
+		Name:              name,
+		NotificationTitle: notificationTitle,
+		Message:           message,
+		ActionLabel:       actionLabel,
+		ActionURL:         actionURL,
+		Style:             style,
+		Title:             title,
+		Tags:              tags,
 	}
 
 	return &out, diags

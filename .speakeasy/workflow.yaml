@@ -3,7 +3,7 @@ speakeasyVersion: latest
 sources:
     my-source:
         inputs:
-            - location: https://docs.api.epilot.io/notification-template.yaml
+            - location: https://docs.api.epilot.io/svc-notification-api.yaml
         overlays:
             - location: overlay.yaml
         registry:

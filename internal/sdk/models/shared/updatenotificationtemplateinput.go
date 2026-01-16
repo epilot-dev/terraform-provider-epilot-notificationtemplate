@@ -2,16 +2,19 @@
 
 package shared
 
-// UpdateNotificationTemplateInput - Input for updating an existing notification template
 type UpdateNotificationTemplateInput struct {
-	// Template name
+	// Internal template name
 	Name *string `json:"name,omitempty"`
-	// Template type identifier
-	Type *string `json:"type,omitempty"`
-	// Notification heading
-	Heading *string `json:"heading,omitempty"`
-	// Notification message content
+	// Notification title (Lexical editor JSON, supports variables)
+	NotificationTitle *string `json:"notification_title,omitempty"`
+	// Notification body (Lexical editor JSON, supports variables)
 	Message *string `json:"message,omitempty"`
+	// CTA button text (supports variables)
+	ActionLabel *string `json:"action_label,omitempty"`
+	// CTA button URL (supports variables)
+	ActionURL *string `json:"action_url,omitempty"`
+	// JSON string with style config
+	Style *string `json:"style,omitempty"`
 	// Display title
 	Title *string `json:"_title,omitempty"`
 	// Tags for categorization
@@ -25,18 +28,11 @@ func (u *UpdateNotificationTemplateInput) GetName() *string {
 	return u.Name
 }
 
-func (u *UpdateNotificationTemplateInput) GetType() *string {
+func (u *UpdateNotificationTemplateInput) GetNotificationTitle() *string {
 	if u == nil {
 		return nil
 	}
-	return u.Type
-}
-
-func (u *UpdateNotificationTemplateInput) GetHeading() *string {
-	if u == nil {
-		return nil
-	}
-	return u.Heading
+	return u.NotificationTitle
 }
 
 func (u *UpdateNotificationTemplateInput) GetMessage() *string {
@@ -44,6 +40,27 @@ func (u *UpdateNotificationTemplateInput) GetMessage() *string {
 		return nil
 	}
 	return u.Message
+}
+
+func (u *UpdateNotificationTemplateInput) GetActionLabel() *string {
+	if u == nil {
+		return nil
+	}
+	return u.ActionLabel
+}
+
+func (u *UpdateNotificationTemplateInput) GetActionURL() *string {
+	if u == nil {
+		return nil
+	}
+	return u.ActionURL
+}
+
+func (u *UpdateNotificationTemplateInput) GetStyle() *string {
+	if u == nil {
+		return nil
+	}
+	return u.Style
 }
 
 func (u *UpdateNotificationTemplateInput) GetTitle() *string {

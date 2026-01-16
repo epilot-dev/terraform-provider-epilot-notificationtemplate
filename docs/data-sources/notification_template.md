@@ -14,7 +14,7 @@ NotificationTemplate DataSource
 
 ```terraform
 data "epilot-notificationtemplate_notification_template" "my_notificationtemplate" {
-  id = "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+  id = "13d87bbe-afb9-4a8a-a666-4a74db90bed5"
 }
 ```
 
@@ -27,13 +27,39 @@ data "epilot-notificationtemplate_notification_template" "my_notificationtemplat
 
 ### Read-Only
 
+- `acl` (Attributes) Access control list (see [below for nested schema](#nestedatt--acl))
+- `action_label` (String) CTA button text (supports variables)
+- `action_url` (String) CTA button URL (supports variables)
 - `created_at` (String) ISO timestamp of creation
-- `heading` (String) Notification heading
-- `message` (String) Notification message content
-- `name` (String) Template name
+- `created_by` (String) User ID who created the template
+- `message` (String) Notification body (Lexical editor JSON, supports variables)
+- `name` (String) Internal template name
+- `notification_title` (String) Notification title (Lexical editor JSON, supports variables)
 - `org` (String) Organization ID
+- `owners` (Attributes List) Entity owners (see [below for nested schema](#nestedatt--owners))
 - `schema` (String) Entity schema type
+- `style` (String) JSON string with style config
+- `system_template` (Boolean) Whether this is a system template
 - `tags` (List of String) Tags for categorization
 - `title` (String) Display title
-- `type` (String) Template type identifier
+- `type` (String) Notification type key
 - `updated_at` (String) ISO timestamp of last update
+- `updated_by` (String) User ID who last updated the template
+
+<a id="nestedatt--acl"></a>
+### Nested Schema for `acl`
+
+Read-Only:
+
+- `delete` (List of String)
+- `edit` (List of String)
+- `view` (List of String)
+
+
+<a id="nestedatt--owners"></a>
+### Nested Schema for `owners`
+
+Read-Only:
+
+- `org_id` (String) Organization ID
+- `user_id` (String) User ID

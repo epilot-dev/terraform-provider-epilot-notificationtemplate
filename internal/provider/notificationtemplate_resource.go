@@ -5,10 +5,14 @@ package provider
 import (
 	"context"
 	"fmt"
+	speakeasy_stringplanmodifier "github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/planmodifiers/stringplanmodifier"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 )
@@ -29,17 +33,25 @@ type NotificationTemplateResource struct {
 
 // NotificationTemplateResourceModel describes the resource data model.
 type NotificationTemplateResourceModel struct {
-	CreatedAt types.String   `tfsdk:"created_at"`
-	Heading   types.String   `tfsdk:"heading"`
-	ID        types.String   `tfsdk:"id"`
-	Message   types.String   `tfsdk:"message"`
-	Name      types.String   `tfsdk:"name"`
-	Org       types.String   `tfsdk:"org"`
-	Schema    types.String   `tfsdk:"schema"`
-	Tags      []types.String `tfsdk:"tags"`
-	Title     types.String   `tfsdk:"title"`
-	Type      types.String   `tfsdk:"type"`
-	UpdatedAt types.String   `tfsdk:"updated_at"`
+	ACL               *tfTypes.ACL          `tfsdk:"acl"`
+	ActionLabel       types.String          `tfsdk:"action_label"`
+	ActionURL         types.String          `tfsdk:"action_url"`
+	CreatedAt         types.String          `tfsdk:"created_at"`
+	CreatedBy         types.String          `tfsdk:"created_by"`
+	ID                types.String          `tfsdk:"id"`
+	Message           types.String          `tfsdk:"message"`
+	Name              types.String          `tfsdk:"name"`
+	NotificationTitle types.String          `tfsdk:"notification_title"`
+	Org               types.String          `tfsdk:"org"`
+	Owners            []tfTypes.EntityOwner `tfsdk:"owners"`
+	Schema            types.String          `tfsdk:"schema"`
+	Style             types.String          `tfsdk:"style"`
+	SystemTemplate    types.Bool            `tfsdk:"system_template"`
+	Tags              []types.String        `tfsdk:"tags"`
+	Title             types.String          `tfsdk:"title"`
+	Type              types.String          `tfsdk:"type"`
+	UpdatedAt         types.String          `tfsdk:"updated_at"`
+	UpdatedBy         types.String          `tfsdk:"updated_by"`
 }
 
 func (r *NotificationTemplateResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -50,14 +62,41 @@ func (r *NotificationTemplateResource) Schema(ctx context.Context, req resource.
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "NotificationTemplate Resource",
 		Attributes: map[string]schema.Attribute{
+			"acl": schema.SingleNestedAttribute{
+				Computed: true,
+				Attributes: map[string]schema.Attribute{
+					"delete": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+					"edit": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+					"view": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+				},
+				Description: `Access control list`,
+			},
+			"action_label": schema.StringAttribute{
+				Computed:    true,
+				Optional:    true,
+				Description: `CTA button text (supports variables)`,
+			},
+			"action_url": schema.StringAttribute{
+				Computed:    true,
+				Optional:    true,
+				Description: `CTA button URL (supports variables)`,
+			},
 			"created_at": schema.StringAttribute{
 				Computed:    true,
 				Description: `ISO timestamp of creation`,
 			},
-			"heading": schema.StringAttribute{
+			"created_by": schema.StringAttribute{
 				Computed:    true,
-				Optional:    true,
-				Description: `Notification heading`,
+				Description: `User ID who created the template`,
 			},
 			"id": schema.StringAttribute{
 				Computed:    true,
@@ -66,19 +105,49 @@ func (r *NotificationTemplateResource) Schema(ctx context.Context, req resource.
 			"message": schema.StringAttribute{
 				Computed:    true,
 				Optional:    true,
-				Description: `Notification message content`,
+				Description: `Notification body (Lexical editor JSON, supports variables)`,
 			},
 			"name": schema.StringAttribute{
 				Required:    true,
-				Description: `Template name`,
+				Description: `Internal template name (required)`,
+			},
+			"notification_title": schema.StringAttribute{
+				Computed:    true,
+				Optional:    true,
+				Description: `Notification title (Lexical editor JSON, supports variables)`,
 			},
 			"org": schema.StringAttribute{
 				Computed:    true,
 				Description: `Organization ID`,
 			},
+			"owners": schema.ListNestedAttribute{
+				Computed: true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"org_id": schema.StringAttribute{
+							Computed:    true,
+							Description: `Organization ID`,
+						},
+						"user_id": schema.StringAttribute{
+							Computed:    true,
+							Description: `User ID`,
+						},
+					},
+				},
+				Description: `Entity owners`,
+			},
 			"schema": schema.StringAttribute{
 				Computed:    true,
 				Description: `Entity schema type`,
+			},
+			"style": schema.StringAttribute{
+				Computed:    true,
+				Optional:    true,
+				Description: `JSON string with style config`,
+			},
+			"system_template": schema.BoolAttribute{
+				Computed:    true,
+				Description: `Whether this is a system template`,
 			},
 			"tags": schema.ListAttribute{
 				Computed:    true,
@@ -92,12 +161,20 @@ func (r *NotificationTemplateResource) Schema(ctx context.Context, req resource.
 				Description: `Display title`,
 			},
 			"type": schema.StringAttribute{
-				Required:    true,
-				Description: `Template type identifier`,
+				Required: true,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.RequiresReplaceIfConfigured(),
+					speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+				},
+				Description: `Notification type key (required). Requires replacement if changed.`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:    true,
 				Description: `ISO timestamp of last update`,
+			},
+			"updated_by": schema.StringAttribute{
+				Computed:    true,
+				Description: `User ID who last updated the template`,
 			},
 		},
 	}
@@ -147,7 +224,7 @@ func (r *NotificationTemplateResource) Create(ctx context.Context, req resource.
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	res, err := r.client.NotificationTemplate.CreateNotificationTemplate(ctx, *request)
+	res, err := r.client.Template.CreateNotificationTemplate(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -157,13 +234,6 @@ func (r *NotificationTemplateResource) Create(ctx context.Context, req resource.
 	}
 	if res == nil {
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
-		return
-	}
-	if res.StatusCode == 409 {
-		resp.Diagnostics.AddError(
-			"Resource Already Exists",
-			"When creating this resource, the API indicated that this resource already exists. You can bring the existing resource under management using Terraform import functionality or retry with a unique configuration.",
-		)
 		return
 	}
 	if res.StatusCode != 201 {
@@ -214,7 +284,7 @@ func (r *NotificationTemplateResource) Read(ctx context.Context, req resource.Re
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	res, err := r.client.NotificationTemplate.GetNotificationTemplate(ctx, *request)
+	res, err := r.client.Template.GetNotificationTemplate(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -268,7 +338,7 @@ func (r *NotificationTemplateResource) Update(ctx context.Context, req resource.
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	res, err := r.client.NotificationTemplate.UpdateNotificationTemplate(ctx, *request)
+	res, err := r.client.Template.UpdateNotificationTemplate(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -328,7 +398,7 @@ func (r *NotificationTemplateResource) Delete(ctx context.Context, req resource.
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	res, err := r.client.NotificationTemplate.DeleteNotificationTemplate(ctx, *request)
+	res, err := r.client.Template.DeleteNotificationTemplate(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {

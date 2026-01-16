@@ -18,19 +18,19 @@ actions:
         retryConnectionErrors: true
 
   # Map CRUD operations
-  - target: $["paths"]["/v1/templates"]["post"]
+  - target: $["paths"]["/v1/notification/templates"]["post"]
     update:
       x-speakeasy-entity-operation: NotificationTemplate#create
 
-  - target: $["paths"]["/v1/templates/{id}"]["get"]
+  - target: $["paths"]["/v1/notification/templates/{id}"]["get"]
     update:
       x-speakeasy-entity-operation: NotificationTemplate#get
 
-  - target: $["paths"]["/v1/templates/{id}"]["put"]
+  - target: $["paths"]["/v1/notification/templates/{id}"]["put"]
     update:
       x-speakeasy-entity-operation: NotificationTemplate#update
 
-  - target: $["paths"]["/v1/templates/{id}"]["delete"]
+  - target: $["paths"]["/v1/notification/templates/{id}"]["delete"]
     update:
       x-speakeasy-entity-operation: NotificationTemplate#delete
 
@@ -38,7 +38,3 @@ actions:
   - target: $["components"]["schemas"]["NotificationTemplate"]
     update:
       x-speakeasy-entity: NotificationTemplate
-
-  # Remove second security scheme (EpilotOrg) to simplify
-  # - target: $["security"][1]
-  #   remove: true

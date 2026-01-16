@@ -1,10 +1,13 @@
 resource "epilot-notificationtemplate_notification_template" "my_notificationtemplate" {
-  heading = "My heading"
-  message = "My message"
-  name    = "Webhook delivery failed"
+  action_label       = "...my_action_label..."
+  action_url         = "...my_action_url..."
+  message            = "...my_message..."
+  name               = "...my_name..."
+  notification_title = "...my_notification_title..."
+  style              = "...my_style..."
   tags = [
-    "default",
+    "..."
   ]
-  title = "Webhook delivery failed"
-  type  = "system.webhook_delivery_failed"
+  title = "...my_title..."
+  type  = "...my_type..."
 }
