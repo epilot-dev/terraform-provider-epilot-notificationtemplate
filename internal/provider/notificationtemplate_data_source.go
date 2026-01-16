@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -28,17 +29,25 @@ type NotificationTemplateDataSource struct {
 
 // NotificationTemplateDataSourceModel describes the data model.
 type NotificationTemplateDataSourceModel struct {
-	CreatedAt types.String   `tfsdk:"created_at"`
-	Heading   types.String   `tfsdk:"heading"`
-	ID        types.String   `tfsdk:"id"`
-	Message   types.String   `tfsdk:"message"`
-	Name      types.String   `tfsdk:"name"`
-	Org       types.String   `tfsdk:"org"`
-	Schema    types.String   `tfsdk:"schema"`
-	Tags      []types.String `tfsdk:"tags"`
-	Title     types.String   `tfsdk:"title"`
-	Type      types.String   `tfsdk:"type"`
-	UpdatedAt types.String   `tfsdk:"updated_at"`
+	ACL               *tfTypes.ACL          `tfsdk:"acl"`
+	ActionLabel       types.String          `tfsdk:"action_label"`
+	ActionURL         types.String          `tfsdk:"action_url"`
+	CreatedAt         types.String          `tfsdk:"created_at"`
+	CreatedBy         types.String          `tfsdk:"created_by"`
+	ID                types.String          `tfsdk:"id"`
+	Message           types.String          `tfsdk:"message"`
+	Name              types.String          `tfsdk:"name"`
+	NotificationTitle types.String          `tfsdk:"notification_title"`
+	Org               types.String          `tfsdk:"org"`
+	Owners            []tfTypes.EntityOwner `tfsdk:"owners"`
+	Schema            types.String          `tfsdk:"schema"`
+	Style             types.String          `tfsdk:"style"`
+	SystemTemplate    types.Bool            `tfsdk:"system_template"`
+	Tags              []types.String        `tfsdk:"tags"`
+	Title             types.String          `tfsdk:"title"`
+	Type              types.String          `tfsdk:"type"`
+	UpdatedAt         types.String          `tfsdk:"updated_at"`
+	UpdatedBy         types.String          `tfsdk:"updated_by"`
 }
 
 // Metadata returns the data source type name.
@@ -52,13 +61,39 @@ func (r *NotificationTemplateDataSource) Schema(ctx context.Context, req datasou
 		MarkdownDescription: "NotificationTemplate DataSource",
 
 		Attributes: map[string]schema.Attribute{
+			"acl": schema.SingleNestedAttribute{
+				Computed: true,
+				Attributes: map[string]schema.Attribute{
+					"delete": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+					"edit": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+					"view": schema.ListAttribute{
+						Computed:    true,
+						ElementType: types.StringType,
+					},
+				},
+				Description: `Access control list`,
+			},
+			"action_label": schema.StringAttribute{
+				Computed:    true,
+				Description: `CTA button text (supports variables)`,
+			},
+			"action_url": schema.StringAttribute{
+				Computed:    true,
+				Description: `CTA button URL (supports variables)`,
+			},
 			"created_at": schema.StringAttribute{
 				Computed:    true,
 				Description: `ISO timestamp of creation`,
 			},
-			"heading": schema.StringAttribute{
+			"created_by": schema.StringAttribute{
 				Computed:    true,
-				Description: `Notification heading`,
+				Description: `User ID who created the template`,
 			},
 			"id": schema.StringAttribute{
 				Required:    true,
@@ -66,19 +101,47 @@ func (r *NotificationTemplateDataSource) Schema(ctx context.Context, req datasou
 			},
 			"message": schema.StringAttribute{
 				Computed:    true,
-				Description: `Notification message content`,
+				Description: `Notification body (Lexical editor JSON, supports variables)`,
 			},
 			"name": schema.StringAttribute{
 				Computed:    true,
-				Description: `Template name`,
+				Description: `Internal template name`,
+			},
+			"notification_title": schema.StringAttribute{
+				Computed:    true,
+				Description: `Notification title (Lexical editor JSON, supports variables)`,
 			},
 			"org": schema.StringAttribute{
 				Computed:    true,
 				Description: `Organization ID`,
 			},
+			"owners": schema.ListNestedAttribute{
+				Computed: true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"org_id": schema.StringAttribute{
+							Computed:    true,
+							Description: `Organization ID`,
+						},
+						"user_id": schema.StringAttribute{
+							Computed:    true,
+							Description: `User ID`,
+						},
+					},
+				},
+				Description: `Entity owners`,
+			},
 			"schema": schema.StringAttribute{
 				Computed:    true,
 				Description: `Entity schema type`,
+			},
+			"style": schema.StringAttribute{
+				Computed:    true,
+				Description: `JSON string with style config`,
+			},
+			"system_template": schema.BoolAttribute{
+				Computed:    true,
+				Description: `Whether this is a system template`,
 			},
 			"tags": schema.ListAttribute{
 				Computed:    true,
@@ -91,11 +154,15 @@ func (r *NotificationTemplateDataSource) Schema(ctx context.Context, req datasou
 			},
 			"type": schema.StringAttribute{
 				Computed:    true,
-				Description: `Template type identifier`,
+				Description: `Notification type key`,
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:    true,
 				Description: `ISO timestamp of last update`,
+			},
+			"updated_by": schema.StringAttribute{
+				Computed:    true,
+				Description: `User ID who last updated the template`,
 			},
 		},
 	}
@@ -145,7 +212,7 @@ func (r *NotificationTemplateDataSource) Read(ctx context.Context, req datasourc
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	res, err := r.client.NotificationTemplate.GetNotificationTemplate(ctx, *request)
+	res, err := r.client.Template.GetNotificationTemplate(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {

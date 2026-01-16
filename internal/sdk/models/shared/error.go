@@ -2,24 +2,23 @@
 
 package shared
 
-// Error - Unauthorized
 type Error struct {
-	// HTTP status code
-	Status *int64 `json:"status,omitempty"`
 	// Error message
-	Error *string `json:"error,omitempty"`
+	Message string `json:"message"`
+	// Error code
+	Code *string `json:"code,omitempty"`
 }
 
-func (e *Error) GetStatus() *int64 {
+func (e *Error) GetMessage() string {
+	if e == nil {
+		return ""
+	}
+	return e.Message
+}
+
+func (e *Error) GetCode() *string {
 	if e == nil {
 		return nil
 	}
-	return e.Status
-}
-
-func (e *Error) GetError() *string {
-	if e == nil {
-		return nil
-	}
-	return e.Error
+	return e.Code
 }

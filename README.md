@@ -3,19 +3,20 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Notification Template API: Notification Template API - enables the management of notification templates for the epilot platform.
-
-Notification templates define the content and structure of notifications sent to users.
+Notification API: Notification API for epilot 360
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [epilot-notificationtemplate](#epilot-notificationtemplate)
+  * [🏗 **Welcome to your new Terraform Provider!** 🏗](#welcome-to-your-new-terraform-provider)
   * [Installation](#installation)
   * [Authentication](#authentication)
   * [Available Resources and Data Sources](#available-resources-and-data-sources)
   * [Testing the provider locally](#testing-the-provider-locally)
+* [Development](#development)
+  * [Contributions](#contributions)
 
 <!-- End Table of Contents [toc] -->
 
@@ -29,12 +30,13 @@ terraform {
   required_providers {
     epilot-notificationtemplate = {
       source  = "epilot-dev/epilot-notificationtemplate"
-      version = "0.11.0"
+      version = "0.12.1"
     }
   }
 }
 
 provider "epilot-notificationtemplate" {
+  epilot_auth = "<YOUR_EPILOT_AUTH>" # Required
   server_url = "..." # Optional
 }
 ```
@@ -49,8 +51,7 @@ Available configuration:
 
 | Provider Attribute | Description |
 |---|---|
-| `epilot_auth` | Epilot Bearer token. |
-| `epilot_org` | Epilot Organization ID. |
+| `epilot_auth` | Authorization header with epilot OAuth2 bearer token. |
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Data Sources [operations] -->
@@ -107,3 +108,12 @@ provider_installation {
 <!-- End Testing the provider locally [usage] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
+
+# Development
+
+## Contributions
+
+While we value open-source contributions to this terraform provider, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation.
+We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
+
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=epilot-notificationtemplate&utm_campaign=terraform)

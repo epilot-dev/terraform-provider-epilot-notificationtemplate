@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/typeconvert"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/models/shared"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -15,9 +16,36 @@ func (r *NotificationTemplateDataSourceModel) RefreshFromSharedNotificationTempl
 	var diags diag.Diagnostics
 
 	if resp != nil {
+		if resp.ACL == nil {
+			r.ACL = nil
+		} else {
+			r.ACL = &tfTypes.ACL{}
+			r.ACL.Delete = make([]types.String, 0, len(resp.ACL.Delete))
+			for _, v := range resp.ACL.Delete {
+				r.ACL.Delete = append(r.ACL.Delete, types.StringValue(v))
+			}
+			r.ACL.Edit = make([]types.String, 0, len(resp.ACL.Edit))
+			for _, v := range resp.ACL.Edit {
+				r.ACL.Edit = append(r.ACL.Edit, types.StringValue(v))
+			}
+			r.ACL.View = make([]types.String, 0, len(resp.ACL.View))
+			for _, v := range resp.ACL.View {
+				r.ACL.View = append(r.ACL.View, types.StringValue(v))
+			}
+		}
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
-		r.ID = types.StringValue(resp.ID)
+		r.ID = types.StringPointerValue(resp.ID)
 		r.Org = types.StringPointerValue(resp.Org)
+		r.Owners = []tfTypes.EntityOwner{}
+
+		for _, ownersItem := range resp.Owners {
+			var owners tfTypes.EntityOwner
+
+			owners.OrgID = types.StringPointerValue(ownersItem.OrgID)
+			owners.UserID = types.StringPointerValue(ownersItem.UserID)
+
+			r.Owners = append(r.Owners, owners)
+		}
 		r.Schema = types.StringPointerValue(resp.Schema)
 		r.Tags = make([]types.String, 0, len(resp.Tags))
 		for _, v := range resp.Tags {
@@ -25,10 +53,16 @@ func (r *NotificationTemplateDataSourceModel) RefreshFromSharedNotificationTempl
 		}
 		r.Title = types.StringPointerValue(resp.Title)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))
-		r.Heading = types.StringPointerValue(resp.Heading)
+		r.ActionLabel = types.StringPointerValue(resp.ActionLabel)
+		r.ActionURL = types.StringPointerValue(resp.ActionURL)
+		r.CreatedBy = types.StringPointerValue(resp.CreatedBy)
 		r.Message = types.StringPointerValue(resp.Message)
-		r.Name = types.StringValue(resp.Name)
-		r.Type = types.StringValue(resp.Type)
+		r.Name = types.StringPointerValue(resp.Name)
+		r.NotificationTitle = types.StringPointerValue(resp.NotificationTitle)
+		r.Style = types.StringPointerValue(resp.Style)
+		r.SystemTemplate = types.BoolPointerValue(resp.SystemTemplate)
+		r.Type = types.StringPointerValue(resp.Type)
+		r.UpdatedBy = types.StringPointerValue(resp.UpdatedBy)
 	}
 
 	return diags

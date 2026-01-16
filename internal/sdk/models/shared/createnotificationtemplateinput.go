@@ -2,16 +2,21 @@
 
 package shared
 
-// CreateNotificationTemplateInput - Input for creating a new notification template
 type CreateNotificationTemplateInput struct {
-	// Template name
+	// Internal template name (required)
 	Name string `json:"name"`
-	// Template type identifier
+	// Notification type key (required)
 	Type string `json:"type"`
-	// Notification heading
-	Heading *string `json:"heading,omitempty"`
-	// Notification message content
+	// Notification title (Lexical editor JSON, supports variables)
+	NotificationTitle *string `json:"notification_title,omitempty"`
+	// Notification body (Lexical editor JSON, supports variables)
 	Message *string `json:"message,omitempty"`
+	// CTA button text (supports variables)
+	ActionLabel *string `json:"action_label,omitempty"`
+	// CTA button URL (supports variables)
+	ActionURL *string `json:"action_url,omitempty"`
+	// JSON string with style config
+	Style *string `json:"style,omitempty"`
 	// Display title
 	Title *string `json:"_title,omitempty"`
 	// Tags for categorization
@@ -32,11 +37,11 @@ func (c *CreateNotificationTemplateInput) GetType() string {
 	return c.Type
 }
 
-func (c *CreateNotificationTemplateInput) GetHeading() *string {
+func (c *CreateNotificationTemplateInput) GetNotificationTitle() *string {
 	if c == nil {
 		return nil
 	}
-	return c.Heading
+	return c.NotificationTitle
 }
 
 func (c *CreateNotificationTemplateInput) GetMessage() *string {
@@ -44,6 +49,27 @@ func (c *CreateNotificationTemplateInput) GetMessage() *string {
 		return nil
 	}
 	return c.Message
+}
+
+func (c *CreateNotificationTemplateInput) GetActionLabel() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ActionLabel
+}
+
+func (c *CreateNotificationTemplateInput) GetActionURL() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ActionURL
+}
+
+func (c *CreateNotificationTemplateInput) GetStyle() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Style
 }
 
 func (c *CreateNotificationTemplateInput) GetTitle() *string {

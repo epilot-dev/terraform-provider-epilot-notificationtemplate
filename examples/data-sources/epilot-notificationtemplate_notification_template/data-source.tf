@@ -1,3 +1,3 @@
 data "epilot-notificationtemplate_notification_template" "my_notificationtemplate" {
-  id = "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+  id = "13d87bbe-afb9-4a8a-a666-4a74db90bed5"
 }

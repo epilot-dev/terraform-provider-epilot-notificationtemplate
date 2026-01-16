@@ -14,14 +14,17 @@ NotificationTemplate Resource
 
 ```terraform
 resource "epilot-notificationtemplate_notification_template" "my_notificationtemplate" {
-  heading = "My heading"
-  message = "My message"
-  name    = "Webhook delivery failed"
+  action_label       = "...my_action_label..."
+  action_url         = "...my_action_url..."
+  message            = "...my_message..."
+  name               = "...my_name..."
+  notification_title = "...my_notification_title..."
+  style              = "...my_style..."
   tags = [
-    "default",
+    "..."
   ]
-  title = "Webhook delivery failed"
-  type  = "system.webhook_delivery_failed"
+  title = "...my_title..."
+  type  = "...my_type..."
 }
 ```
 
@@ -30,23 +33,49 @@ resource "epilot-notificationtemplate_notification_template" "my_notificationtem
 
 ### Required
 
-- `name` (String) Template name
-- `type` (String) Template type identifier
+- `name` (String) Internal template name (required)
+- `type` (String) Notification type key (required). Requires replacement if changed.
 
 ### Optional
 
-- `heading` (String) Notification heading
-- `message` (String) Notification message content
+- `action_label` (String) CTA button text (supports variables)
+- `action_url` (String) CTA button URL (supports variables)
+- `message` (String) Notification body (Lexical editor JSON, supports variables)
+- `notification_title` (String) Notification title (Lexical editor JSON, supports variables)
+- `style` (String) JSON string with style config
 - `tags` (List of String) Tags for categorization
 - `title` (String) Display title
 
 ### Read-Only
 
+- `acl` (Attributes) Access control list (see [below for nested schema](#nestedatt--acl))
 - `created_at` (String) ISO timestamp of creation
+- `created_by` (String) User ID who created the template
 - `id` (String) Template ID (UUID)
 - `org` (String) Organization ID
+- `owners` (Attributes List) Entity owners (see [below for nested schema](#nestedatt--owners))
 - `schema` (String) Entity schema type
+- `system_template` (Boolean) Whether this is a system template
 - `updated_at` (String) ISO timestamp of last update
+- `updated_by` (String) User ID who last updated the template
+
+<a id="nestedatt--acl"></a>
+### Nested Schema for `acl`
+
+Read-Only:
+
+- `delete` (List of String)
+- `edit` (List of String)
+- `view` (List of String)
+
+
+<a id="nestedatt--owners"></a>
+### Nested Schema for `owners`
+
+Read-Only:
+
+- `org_id` (String) Organization ID
+- `user_id` (String) User ID
 
 ## Import
 
@@ -57,12 +86,12 @@ In Terraform v1.5.0 and later, the [`import` block](https://developer.hashicorp.
 ```terraform
 import {
   to = epilot-notificationtemplate_notification_template.my_epilot-notificationtemplate_notification_template
-  id = "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+  id = "..."
 }
 ```
 
 The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can be used, for example:
 
 ```shell
-terraform import epilot-notificationtemplate_notification_template.my_epilot-notificationtemplate_notification_template "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
+terraform import epilot-notificationtemplate_notification_template.my_epilot-notificationtemplate_notification_template "..."
 ```

@@ -2,7 +2,7 @@
 
 package sdk
 
-// Generated from OpenAPI doc version 1.4.0 and generator version 2.794.1
+// Generated from OpenAPI doc version 1.2.0 and generator version 2.794.1
 
 import (
 	"context"
@@ -18,9 +18,7 @@ import (
 
 // ServerList contains the list of servers available to the SDK
 var ServerList = []string{
-	"https://notification-template.sls.epilot.io",
-	// Production server
-	"https://notification-template.sls.epilot.io",
+	"https://notification.sls.epilot.io",
 }
 
 // HTTPClient provides an interface for supplying the SDK with a custom HTTP client
@@ -49,13 +47,13 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-// SDK - Notification Template API: Notification Template API - enables the management of notification templates for the epilot platform.
-//
-// Notification templates define the content and structure of notifications sent to users.
+// SDK - Notification API: Notification API for epilot 360
 type SDK struct {
 	SDKVersion string
-	// Notification Template operations
-	NotificationTemplate *NotificationTemplate
+	// Notification
+	Notification *Notification
+	// Notification Template
+	Template *Template
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -131,9 +129,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.11.0",
+		SDKVersion: "0.12.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/terraform 0.11.0 2.794.1 1.4.0 github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk",
+			UserAgent:  "speakeasy-sdk/terraform 0.12.1 2.794.1 1.2.0 github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -154,7 +152,8 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.NotificationTemplate = newNotificationTemplate(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Notification = newNotification(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Template = newTemplate(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

@@ -29,7 +29,6 @@ type EpilotNotificationtemplateProvider struct {
 // EpilotNotificationtemplateProviderModel describes the provider data model.
 type EpilotNotificationtemplateProviderModel struct {
 	EpilotAuth types.String `tfsdk:"epilot_auth"`
-	EpilotOrg  types.String `tfsdk:"epilot_org"`
 	ServerURL  types.String `tfsdk:"server_url"`
 }
 
@@ -42,23 +41,16 @@ func (p *EpilotNotificationtemplateProvider) Schema(ctx context.Context, req pro
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"epilot_auth": schema.StringAttribute{
-				MarkdownDescription: `Epilot Bearer token.`,
-				Optional:            true,
-				Sensitive:           true,
-			},
-			"epilot_org": schema.StringAttribute{
-				MarkdownDescription: `Epilot Organization ID.`,
-				Optional:            true,
+				MarkdownDescription: `Authorization header with epilot OAuth2 bearer token.`,
+				Required:            true,
 				Sensitive:           true,
 			},
 			"server_url": schema.StringAttribute{
-				Description: `Server URL (defaults to https://notification-template.sls.epilot.io)`,
+				Description: `Server URL (defaults to https://notification.sls.epilot.io)`,
 				Optional:    true,
 			},
 		},
-		MarkdownDescription: `Notification Template API: Notification Template API - enables the management of notification templates for the epilot platform.` + "\n" +
-			`` + "\n" +
-			`Notification templates define the content and structure of notifications sent to users.`,
+		MarkdownDescription: `Notification API: Notification API for epilot 360`,
 	}
 }
 
@@ -74,17 +66,20 @@ func (p *EpilotNotificationtemplateProvider) Configure(ctx context.Context, req 
 	serverUrl := data.ServerURL.ValueString()
 
 	if serverUrl == "" {
-		serverUrl = "https://notification-template.sls.epilot.io"
+		serverUrl = "https://notification.sls.epilot.io"
 	}
 
 	security := shared.Security{}
 
 	if !data.EpilotAuth.IsUnknown() {
-		security.EpilotAuth = data.EpilotAuth.ValueStringPointer()
+		security.EpilotAuth = data.EpilotAuth.ValueString()
 	}
 
-	if !data.EpilotOrg.IsUnknown() {
-		security.EpilotOrg = data.EpilotOrg.ValueStringPointer()
+	if security.EpilotAuth == "" {
+		resp.Diagnostics.AddError(
+			"Missing Provider Security Configuration",
+			"Provider configuration epilot_auth attribute must be configured.",
+		)
 	}
 
 	providerHTTPTransportOpts := ProviderHTTPTransportOpts{

@@ -9,17 +9,17 @@ import (
 )
 
 type ListNotificationTemplatesRequest struct {
-	// Lucene query string for filtering (default returns all)
+	// Lucene query string for filtering
 	Q *string `queryParam:"style=form,explode=true,name=q"`
 	// Pagination offset (0-based)
 	From *int64 `default:"0" queryParam:"style=form,explode=true,name=from"`
-	// Maximum number of results to return (max 1000)
+	// Results per page
 	Size *int64 `default:"25" queryParam:"style=form,explode=true,name=size"`
-	// Sort field(s), prefix with - for descending
+	// Sort fields (prefix with - for descending)
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
-	// Comma-separated list of fields to include
+	// Comma-separated fields to include
 	Fields *string `queryParam:"style=form,explode=true,name=fields"`
-	// When true, resolves nested relation references
+	// Resolve nested relations
 	Hydrate *bool `default:"false" queryParam:"style=form,explode=true,name=hydrate"`
 }
 
@@ -76,27 +76,6 @@ func (l *ListNotificationTemplatesRequest) GetHydrate() *bool {
 	return l.Hydrate
 }
 
-// ListNotificationTemplatesResponseBody - List of notification templates
-type ListNotificationTemplatesResponseBody struct {
-	Results []shared.NotificationTemplate `json:"results,omitempty"`
-	// Total number of results
-	Hits *int64 `json:"hits,omitempty"`
-}
-
-func (l *ListNotificationTemplatesResponseBody) GetResults() []shared.NotificationTemplate {
-	if l == nil {
-		return nil
-	}
-	return l.Results
-}
-
-func (l *ListNotificationTemplatesResponseBody) GetHits() *int64 {
-	if l == nil {
-		return nil
-	}
-	return l.Hits
-}
-
 type ListNotificationTemplatesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -104,8 +83,8 @@ type ListNotificationTemplatesResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// List of notification templates
-	Object *ListNotificationTemplatesResponseBody
+	// Success
+	NotificationTemplateListResponse *shared.NotificationTemplateListResponse
 	// Unauthorized
 	Error *shared.Error
 }
@@ -131,11 +110,11 @@ func (l *ListNotificationTemplatesResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListNotificationTemplatesResponse) GetObject() *ListNotificationTemplatesResponseBody {
+func (l *ListNotificationTemplatesResponse) GetNotificationTemplateListResponse() *shared.NotificationTemplateListResponse {
 	if l == nil {
 		return nil
 	}
-	return l.Object
+	return l.NotificationTemplateListResponse
 }
 
 func (l *ListNotificationTemplatesResponse) GetError() *shared.Error {

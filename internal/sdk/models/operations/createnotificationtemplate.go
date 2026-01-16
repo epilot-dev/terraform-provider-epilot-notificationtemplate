@@ -14,9 +14,9 @@ type CreateNotificationTemplateResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Single notification template response
+	// Created
 	NotificationTemplate *shared.NotificationTemplate
-	// Client error
+	// Bad Request
 	Error *shared.Error
 }
 

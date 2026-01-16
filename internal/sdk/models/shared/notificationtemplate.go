@@ -7,10 +7,37 @@ import (
 	"time"
 )
 
-// NotificationTemplate - A notification template entity
+// ACL - Access control list
+type ACL struct {
+	View   []string `json:"view,omitempty"`
+	Edit   []string `json:"edit,omitempty"`
+	Delete []string `json:"delete,omitempty"`
+}
+
+func (a *ACL) GetView() []string {
+	if a == nil {
+		return nil
+	}
+	return a.View
+}
+
+func (a *ACL) GetEdit() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Edit
+}
+
+func (a *ACL) GetDelete() []string {
+	if a == nil {
+		return nil
+	}
+	return a.Delete
+}
+
 type NotificationTemplate struct {
 	// Unique identifier
-	ID string `json:"_id"`
+	ID *string `json:"_id,omitempty"`
 	// Entity schema type
 	Schema *string `json:"_schema,omitempty"`
 	// Display title
@@ -23,14 +50,30 @@ type NotificationTemplate struct {
 	CreatedAt *time.Time `json:"_created_at,omitempty"`
 	// ISO timestamp of last update
 	UpdatedAt *time.Time `json:"_updated_at,omitempty"`
-	// Template name
-	Name string `json:"name"`
-	// Template type identifier
-	Type string `json:"type"`
-	// Notification heading
-	Heading *string `json:"heading,omitempty"`
-	// Notification message content
+	// Entity owners
+	Owners []EntityOwner `json:"_owners,omitempty"`
+	// Access control list
+	ACL *ACL `json:"_acl,omitempty"`
+	// Internal template name
+	Name *string `json:"name,omitempty"`
+	// Notification type key
+	Type *string `json:"type,omitempty"`
+	// Notification title (Lexical editor JSON, supports variables)
+	NotificationTitle *string `json:"notification_title,omitempty"`
+	// Notification body (Lexical editor JSON, supports variables)
 	Message *string `json:"message,omitempty"`
+	// CTA button text (supports variables)
+	ActionLabel *string `json:"action_label,omitempty"`
+	// CTA button URL (supports variables)
+	ActionURL *string `json:"action_url,omitempty"`
+	// JSON string with style config
+	Style *string `json:"style,omitempty"`
+	// Whether this is a system template
+	SystemTemplate *bool `json:"system_template,omitempty"`
+	// User ID who created the template
+	CreatedBy *string `json:"created_by,omitempty"`
+	// User ID who last updated the template
+	UpdatedBy *string `json:"updated_by,omitempty"`
 }
 
 func (n NotificationTemplate) MarshalJSON() ([]byte, error) {
@@ -44,9 +87,9 @@ func (n *NotificationTemplate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (n *NotificationTemplate) GetID() string {
+func (n *NotificationTemplate) GetID() *string {
 	if n == nil {
-		return ""
+		return nil
 	}
 	return n.ID
 }
@@ -93,25 +136,39 @@ func (n *NotificationTemplate) GetUpdatedAt() *time.Time {
 	return n.UpdatedAt
 }
 
-func (n *NotificationTemplate) GetName() string {
+func (n *NotificationTemplate) GetOwners() []EntityOwner {
 	if n == nil {
-		return ""
+		return nil
+	}
+	return n.Owners
+}
+
+func (n *NotificationTemplate) GetACL() *ACL {
+	if n == nil {
+		return nil
+	}
+	return n.ACL
+}
+
+func (n *NotificationTemplate) GetName() *string {
+	if n == nil {
+		return nil
 	}
 	return n.Name
 }
 
-func (n *NotificationTemplate) GetType() string {
+func (n *NotificationTemplate) GetType() *string {
 	if n == nil {
-		return ""
+		return nil
 	}
 	return n.Type
 }
 
-func (n *NotificationTemplate) GetHeading() *string {
+func (n *NotificationTemplate) GetNotificationTitle() *string {
 	if n == nil {
 		return nil
 	}
-	return n.Heading
+	return n.NotificationTitle
 }
 
 func (n *NotificationTemplate) GetMessage() *string {
@@ -119,4 +176,46 @@ func (n *NotificationTemplate) GetMessage() *string {
 		return nil
 	}
 	return n.Message
+}
+
+func (n *NotificationTemplate) GetActionLabel() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ActionLabel
+}
+
+func (n *NotificationTemplate) GetActionURL() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ActionURL
+}
+
+func (n *NotificationTemplate) GetStyle() *string {
+	if n == nil {
+		return nil
+	}
+	return n.Style
+}
+
+func (n *NotificationTemplate) GetSystemTemplate() *bool {
+	if n == nil {
+		return nil
+	}
+	return n.SystemTemplate
+}
+
+func (n *NotificationTemplate) GetCreatedBy() *string {
+	if n == nil {
+		return nil
+	}
+	return n.CreatedBy
+}
+
+func (n *NotificationTemplate) GetUpdatedBy() *string {
+	if n == nil {
+		return nil
+	}
+	return n.UpdatedBy
 }
