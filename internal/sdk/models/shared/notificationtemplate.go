@@ -37,19 +37,19 @@ func (a *ACL) GetDelete() []string {
 
 type NotificationTemplate struct {
 	// Unique identifier
-	ID *string `json:"_id,omitempty"`
+	ID string `json:"_id"`
 	// Entity schema type
-	Schema *string `json:"_schema,omitempty"`
+	Schema string `json:"_schema"`
 	// Display title
-	Title *string `json:"_title,omitempty"`
+	Title *string `json:"_title"`
 	// Organization ID
-	Org *string `json:"_org,omitempty"`
+	Org string `json:"_org"`
 	// Tags for categorization
 	Tags []string `json:"_tags,omitempty"`
 	// ISO timestamp of creation
-	CreatedAt *time.Time `json:"_created_at,omitempty"`
+	CreatedAt *time.Time `json:"_created_at"`
 	// ISO timestamp of last update
-	UpdatedAt *time.Time `json:"_updated_at,omitempty"`
+	UpdatedAt *time.Time `json:"_updated_at"`
 	// Entity owners
 	Owners []EntityOwner `json:"_owners,omitempty"`
 	// Access control list
@@ -87,16 +87,16 @@ func (n *NotificationTemplate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (n *NotificationTemplate) GetID() *string {
+func (n *NotificationTemplate) GetID() string {
 	if n == nil {
-		return nil
+		return ""
 	}
 	return n.ID
 }
 
-func (n *NotificationTemplate) GetSchema() *string {
+func (n *NotificationTemplate) GetSchema() string {
 	if n == nil {
-		return nil
+		return ""
 	}
 	return n.Schema
 }
@@ -108,9 +108,9 @@ func (n *NotificationTemplate) GetTitle() *string {
 	return n.Title
 }
 
-func (n *NotificationTemplate) GetOrg() *string {
+func (n *NotificationTemplate) GetOrg() string {
 	if n == nil {
-		return nil
+		return ""
 	}
 	return n.Org
 }

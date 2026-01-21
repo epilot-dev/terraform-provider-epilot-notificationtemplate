@@ -10,7 +10,6 @@ Notification API: Notification API for epilot 360
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [epilot-notificationtemplate](#epilot-notificationtemplate)
-  * [🏗 **Welcome to your new Terraform Provider!** 🏗](#welcome-to-your-new-terraform-provider)
   * [Installation](#installation)
   * [Authentication](#authentication)
   * [Available Resources and Data Sources](#available-resources-and-data-sources)
@@ -30,7 +29,7 @@ terraform {
   required_providers {
     epilot-notificationtemplate = {
       source  = "epilot-dev/epilot-notificationtemplate"
-      version = "0.12.1"
+      version = "0.13.1"
     }
   }
 }

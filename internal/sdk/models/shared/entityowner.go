@@ -4,21 +4,21 @@ package shared
 
 type EntityOwner struct {
 	// Organization ID
-	OrgID *string `json:"org_id,omitempty"`
+	OrgID string `json:"org_id"`
 	// User ID
-	UserID *string `json:"user_id,omitempty"`
+	UserID string `json:"user_id"`
 }
 
-func (e *EntityOwner) GetOrgID() *string {
+func (e *EntityOwner) GetOrgID() string {
 	if e == nil {
-		return nil
+		return ""
 	}
 	return e.OrgID
 }
 
-func (e *EntityOwner) GetUserID() *string {
+func (e *EntityOwner) GetUserID() string {
 	if e == nil {
-		return nil
+		return ""
 	}
 	return e.UserID
 }

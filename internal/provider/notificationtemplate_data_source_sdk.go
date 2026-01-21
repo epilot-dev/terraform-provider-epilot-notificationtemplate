@@ -34,22 +34,24 @@ func (r *NotificationTemplateDataSourceModel) RefreshFromSharedNotificationTempl
 			}
 		}
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
-		r.ID = types.StringPointerValue(resp.ID)
-		r.Org = types.StringPointerValue(resp.Org)
+		r.ID = types.StringValue(resp.ID)
+		r.Org = types.StringValue(resp.Org)
 		r.Owners = []tfTypes.EntityOwner{}
 
 		for _, ownersItem := range resp.Owners {
 			var owners tfTypes.EntityOwner
 
-			owners.OrgID = types.StringPointerValue(ownersItem.OrgID)
-			owners.UserID = types.StringPointerValue(ownersItem.UserID)
+			owners.OrgID = types.StringValue(ownersItem.OrgID)
+			owners.UserID = types.StringValue(ownersItem.UserID)
 
 			r.Owners = append(r.Owners, owners)
 		}
-		r.Schema = types.StringPointerValue(resp.Schema)
-		r.Tags = make([]types.String, 0, len(resp.Tags))
-		for _, v := range resp.Tags {
-			r.Tags = append(r.Tags, types.StringValue(v))
+		r.Schema = types.StringValue(resp.Schema)
+		if resp.Tags != nil {
+			r.Tags = make([]types.String, 0, len(resp.Tags))
+			for _, v := range resp.Tags {
+				r.Tags = append(r.Tags, types.StringValue(v))
+			}
 		}
 		r.Title = types.StringPointerValue(resp.Title)
 		r.UpdatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.UpdatedAt))

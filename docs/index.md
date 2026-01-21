@@ -16,7 +16,7 @@ terraform {
   required_providers {
     epilot-notificationtemplate = {
       source  = "epilot-dev/epilot-notificationtemplate"
-      version = "0.12.1"
+      version = "0.13.1"
     }
   }
 }
