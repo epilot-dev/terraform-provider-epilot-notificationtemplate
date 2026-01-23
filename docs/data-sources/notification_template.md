@@ -32,6 +32,7 @@ data "epilot-notificationtemplate_notification_template" "my_notificationtemplat
 - `action_url` (String) CTA button URL (supports variables)
 - `created_at` (String) ISO timestamp of creation
 - `created_by` (String) User ID who created the template
+- `manifest` (List of String) Manifest ID used to create/update the entity
 - `message` (String) Notification body (Lexical editor JSON, supports variables)
 - `name` (String) Internal template name
 - `notification_title` (String) Notification title (Lexical editor JSON, supports variables)

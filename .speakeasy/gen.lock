@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 75731d25-90ec-4ba3-8450-36a352daba22
 management:
-  docChecksum: 8c6fa7632cd453258791a668300f0728
-  docVersion: 1.6.0
+  docChecksum: cd948b9cb4703b9d20d1a779faf1df56
+  docVersion: 1.7.0
   speakeasyVersion: 1.685.0
   generationVersion: 2.794.1
-  releaseVersion: 0.13.1
-  configChecksum: b46690078edc32725ca73fa820168697
+  releaseVersion: 0.14.0
+  configChecksum: d2e5c6e021f6391390d1a631b05a7e69
 persistentEdits:
-  generation_id: 7579eaf4-ed25-4e09-a847-82579ccac330
-  pristine_commit_hash: 29ae7ee4c680d54d0a31f4453292163de2c41379
-  pristine_tree_hash: 0175d3d026cd62838cd682b3b60dcf3e578873ff
+  generation_id: 99012002-94e4-4dd6-b494-21b1cc1eaf1c
+  pristine_commit_hash: 3f423a669301337e94fdf508698eda1c91203115
+  pristine_tree_hash: 4e19a6cc3380297365fc0e2e2b30e70237476deb
 features:
   terraform:
     additionalDependencies: 0.1.0
@@ -36,8 +36,8 @@ trackedFiles:
     pristine_git_object: ab868e035235cf2466d82f4a38403a2622cc8590
   examples/provider/provider.tf:
     id: 954e955c0240
-    last_write_checksum: sha1:b0256289881442e6bf74758645b1844691bf1d5d
-    pristine_git_object: 34a39c9c6207319509becef8a563d099b1d4a861
+    last_write_checksum: sha1:15f4bcd8be675ac03a3093be02453a6e1946e72c
+    pristine_git_object: 2204c08992d3a899f14f726a994fbb8dc262ca8a
   examples/resources/epilot-notificationtemplate_notification_template/import-by-string-id.tf:
     id: 1acc1fffc8b0
     last_write_checksum: sha1:08f1f749648e3b8e7ebf55c5e437c1d324e801f7
@@ -48,8 +48,8 @@ trackedFiles:
     pristine_git_object: f63d522e7f5294cb2fa2f3784932085c316e9ddb
   examples/resources/epilot-notificationtemplate_notification_template/resource.tf:
     id: 1bb30d0e41af
-    last_write_checksum: sha1:eea904be87ead7d121fead40d4b9a6ccb674c6b0
-    pristine_git_object: d52e245739214d63dfd4083568f15273988d3195
+    last_write_checksum: sha1:791d0dd9d0f968c5c40c7365d8e377f733793c0b
+    pristine_git_object: c8a142e1f7368074e8d2728843932bf0322345ab
   go.mod:
     id: c47645c391ad
     last_write_checksum: sha1:28029e85ab8e892504f68ea905e351049ce7384a
@@ -148,24 +148,24 @@ trackedFiles:
     pristine_git_object: 0ea64fbeb1fd7709d7241a8e06d34bfe9d0323d3
   internal/provider/notificationtemplate_data_source.go:
     id: 9bc0bbc2d108
-    last_write_checksum: sha1:fc8f7d0069bd82649ec95a4d4ffd68b803a59066
-    pristine_git_object: 2b6740cac920d98128bd82dd4e7241feb7990b4f
+    last_write_checksum: sha1:87d7e4742d2dc30d9f6e0860182cb6c1d4c971df
+    pristine_git_object: 950d62b5bed56c39f5f1d3b3e7967237cb07f9d0
   internal/provider/notificationtemplate_data_source_sdk.go:
     id: f16cd9555dc9
-    last_write_checksum: sha1:91ce1ffa831a357670efe8a03f3db68e919f0860
-    pristine_git_object: 2af1297e54b07310709a64c34d3d933f904418b4
+    last_write_checksum: sha1:f1626e66885d908e0f32968399076b7017c46aa5
+    pristine_git_object: 017e7b8db89cb9170f59d341c27720598b534249
   internal/provider/notificationtemplate_resource.go:
     id: 288a75e19257
-    last_write_checksum: sha1:c02f9a1616397bb7a30e05400282aa3c64ad8f13
-    pristine_git_object: f8325908b147c1f87d1cded612633a1c807c036b
+    last_write_checksum: sha1:80e70548970ab8d74d6e1d88597e32f439c9ec26
+    pristine_git_object: fd78dbc299ebe337b43739bb69eae958d62dfe74
   internal/provider/notificationtemplate_resource_sdk.go:
     id: cf3e16789f59
-    last_write_checksum: sha1:c0b6fdad50e9777235f6b35ac256bbe3a80eb729
-    pristine_git_object: 70fae2e922d3520b584c6c9075df869e06b06ead
+    last_write_checksum: sha1:992975321796a0d35cdff3cef90a3faae6b15faa
+    pristine_git_object: c7d62ca562eccd0aff285e7cd56613259ca7975a
   internal/provider/provider.go:
     id: 1e7e86841cf3
-    last_write_checksum: sha1:52e364e32e0ba955e7c9052595f6dfe31d5935b3
-    pristine_git_object: 1e3295a092e8d517e99b962410451a2607c5cd2d
+    last_write_checksum: sha1:005b180cec0be474f989ee00fc899d532fb71f37
+    pristine_git_object: 1cc45650196bcd7773f95f18793a837d60f266f4
   internal/provider/reflect/diags.go:
     id: 35b6b44972e2
     last_write_checksum: sha1:ace8bc53054bb1d8ee8689acf3e4323de75a6297
@@ -244,8 +244,8 @@ trackedFiles:
     pristine_git_object: 6a5507bdb03d1946f65d254232bb266369c6ed4c
   internal/provider/utils.go:
     id: 312d50f148af
-    last_write_checksum: sha1:048747d6f3ea8925e24a8c36a2171eaecfd26f1c
-    pristine_git_object: 77c689b674d2cd99a66a9efeb74c05a390004786
+    last_write_checksum: sha1:58843791a367939b156fcda8f98b7e7194338c3f
+    pristine_git_object: b2d789774c393f65b50cd82995a7fd086ededa23
   internal/sdk/.gitattributes:
     id: 1ea4c4e0a39d
     last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
@@ -380,8 +380,8 @@ trackedFiles:
     pristine_git_object: 59186240c6e47b0f518cbe7d5a0ba1b8fd2751fe
   internal/sdk/models/shared/createnotificationtemplateinput.go:
     id: a3e325834f6c
-    last_write_checksum: sha1:bf37bd62886930c679b83003817ff0a3165aa7f2
-    pristine_git_object: 5979321ea43d2bd26953134f9b68782c2d956227
+    last_write_checksum: sha1:f8302518b3005228a0d6e69b2b9e80072504839f
+    pristine_git_object: b9fc050996a0ffc2b8212b5ba5352b7cae2e59ee
   internal/sdk/models/shared/entityoperation.go:
     id: 0f261658779b
     last_write_checksum: sha1:64b65514d8d675c431d2b8d6db53c1223717e933
@@ -408,16 +408,16 @@ trackedFiles:
     pristine_git_object: 3122c06a5fb4704891d174832b649bbce1e791aa
   internal/sdk/models/shared/notificationtemplate.go:
     id: 99719423a283
-    last_write_checksum: sha1:38b1d9d192ea89562158b35e935a106c2c407bd6
-    pristine_git_object: f12173c2edb17a0eef2102bff6b0519cf5c126dd
+    last_write_checksum: sha1:2fbe3dd39e4099c3b64443690b278dd06dacb09d
+    pristine_git_object: 42e83f032047e5d0753b3a97ffccd0650d914f03
   internal/sdk/models/shared/notificationtemplatelistresponse.go:
     id: 208e01491a51
     last_write_checksum: sha1:14309c2329d7add7c8d5dc8c92ca54dbb612d230
     pristine_git_object: 410e3d3ecfe3489d18bec2c87c01cad92332d5a0
   internal/sdk/models/shared/security.go:
     id: 9098af98367e
-    last_write_checksum: sha1:4b99dae59844b25a5acc4fa1a73ca1e623f2e08e
-    pristine_git_object: 37f7f47928a46b475865d6fb81c865dcc0bf27ce
+    last_write_checksum: sha1:e8e31b606a77714313987210c34abcc8924489c8
+    pristine_git_object: d393ff12dbea8bb4babdc7dcb591ab9f4ec30bb0
   internal/sdk/models/shared/sendpreviewinput.go:
     id: 69772ce705d2
     last_write_checksum: sha1:931bda761af24636c32003276a97f3de69227f31
@@ -428,8 +428,8 @@ trackedFiles:
     pristine_git_object: 24dfc22da7df11bb332ce2724cf564e8f31fcc5c
   internal/sdk/models/shared/updatenotificationtemplateinput.go:
     id: 3a2ecf4631d6
-    last_write_checksum: sha1:ba4f7c20304185813890f3cdaf0272db80e0b3ef
-    pristine_git_object: ae5454781ee5ba23ab07324c851e9488fa30b33e
+    last_write_checksum: sha1:dfaea0a545dc4acf4e91a444e21bafab79a24203
+    pristine_git_object: 7f19aaffdaf4b7dc80f0742c7f0c5b9b650d8332
   internal/sdk/notification.go:
     id: f2550bbf67f4
     last_write_checksum: sha1:6b99b0cb3a072c2d5abd5efb9af643c4cd96ad98
@@ -448,8 +448,8 @@ trackedFiles:
     pristine_git_object: aa809fccb3445b1e2530a979dad620512f50e70f
   internal/sdk/sdk.go:
     id: 02d7190ee502
-    last_write_checksum: sha1:c23cd91aebb60e8b72086b4fedc4fef61986c4d9
-    pristine_git_object: 3b59ce7616add9d9d4392242ca376c70add60641
+    last_write_checksum: sha1:168d08385f87a5098ef6fd41fa6872bf63e9f6a6
+    pristine_git_object: 9c4339ff14b1c86d090821e44a9ded8f4b5e6316
   internal/sdk/template.go:
     id: 0ebe2c7568c6
     last_write_checksum: sha1:87224109fb3fd9ae72fd3fd62064292fa134215b
@@ -555,7 +555,7 @@ examples:
           hydrate: false
       responses:
         "200":
-          application/json: {}
+          application/json: {"results": [{"_id": "5d8f2c08-a5a0-4671-afd8-3680b722a64a", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2025-12-11T08:26:04.545Z", "_updated_at": "2024-03-29T12:37:46.054Z", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}]}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -563,10 +563,10 @@ examples:
   createNotificationTemplate:
     speakeasy-default-create-notification-template:
       requestBody:
-        application/json: {"name": "Webhook delivery failed", "type": "system.webhook_delivery_failed"}
+        application/json: {"name": "Webhook delivery failed", "type": "system.webhook_delivery_failed", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
       responses:
         "201":
-          application/json: {"_id": "19687f51-7f21-4d7c-b7a5-9750490443a9", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2024-02-27T03:05:33.311Z", "_updated_at": "2026-11-23T01:37:36.081Z"}
+          application/json: {"_id": "19687f51-7f21-4d7c-b7a5-9750490443a9", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2024-02-27T03:05:33.311Z", "_updated_at": "2026-11-23T01:37:36.081Z", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
         "400":
           application/json: {"message": "<value>"}
         "500":
@@ -578,7 +578,7 @@ examples:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       responses:
         "200":
-          application/json: {"_id": "1b86c8fe-cb85-45f8-8130-0f9059678773", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": null, "_updated_at": null}
+          application/json: {"_id": "1b86c8fe-cb85-45f8-8130-0f9059678773", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": null, "_updated_at": null, "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -589,10 +589,10 @@ examples:
         path:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       requestBody:
-        application/json: {}
+        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
       responses:
         "200":
-          application/json: {"_id": "46d811e3-04bb-45d8-af2e-8cf0ec0cbc12", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2026-06-19T07:01:49.826Z", "_updated_at": "2025-07-03T23:03:39.018Z"}
+          application/json: {"_id": "46d811e3-04bb-45d8-af2e-8cf0ec0cbc12", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2026-06-19T07:01:49.826Z", "_updated_at": "2025-07-03T23:03:39.018Z", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
         "400":
           application/json: {"message": "<value>"}
         "500":
@@ -604,7 +604,7 @@ examples:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       responses:
         "200":
-          application/json: {"_id": "46ab060f-53bd-4163-8a35-acfec6f7598b", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2025-08-14T18:18:51.013Z", "_updated_at": "2024-05-23T08:21:22.267Z"}
+          application/json: {"_id": "46ab060f-53bd-4163-8a35-acfec6f7598b", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2025-08-14T18:18:51.013Z", "_updated_at": "2024-05-23T08:21:22.267Z", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
         "401":
           application/json: {"message": "<value>"}
         "500":
@@ -615,10 +615,10 @@ examples:
         path:
           id: "1fdc8f66-0e2b-4e20-a347-9cbdbf6a7217"
       requestBody:
-        application/json: {}
+        application/json: {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
       responses:
         "200":
-          application/json: {"_id": "1298704e-a852-466d-9b17-cb0a6084433b", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2026-03-12T17:00:38.207Z", "_updated_at": "2025-04-05T08:48:00.132Z"}
+          application/json: {"_id": "1298704e-a852-466d-9b17-cb0a6084433b", "_schema": "<value>", "_title": "<value>", "_org": "<value>", "_created_at": "2026-03-12T17:00:38.207Z", "_updated_at": "2025-04-05T08:48:00.132Z", "_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}
         "400":
           application/json: {"message": "<value>"}
         "500":
@@ -659,7 +659,7 @@ examples:
   sendPreview:
     speakeasy-default-send-preview:
       requestBody:
-        application/json: {"template": {}}
+        application/json: {"template": {"_manifest": ["123e4567-e89b-12d3-a456-426614174000"]}}
       responses:
         "200":
           application/json: [{"success": false}]

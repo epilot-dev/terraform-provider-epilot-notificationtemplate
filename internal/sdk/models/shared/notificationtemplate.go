@@ -50,6 +50,8 @@ type NotificationTemplate struct {
 	CreatedAt *time.Time `json:"_created_at"`
 	// ISO timestamp of last update
 	UpdatedAt *time.Time `json:"_updated_at"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
 	// Entity owners
 	Owners []EntityOwner `json:"_owners,omitempty"`
 	// Access control list
@@ -134,6 +136,13 @@ func (n *NotificationTemplate) GetUpdatedAt() *time.Time {
 		return nil
 	}
 	return n.UpdatedAt
+}
+
+func (n *NotificationTemplate) GetManifest() []string {
+	if n == nil {
+		return nil
+	}
+	return n.Manifest
 }
 
 func (n *NotificationTemplate) GetOwners() []EntityOwner {

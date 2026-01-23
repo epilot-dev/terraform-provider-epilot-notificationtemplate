@@ -35,6 +35,10 @@ func (r *NotificationTemplateDataSourceModel) RefreshFromSharedNotificationTempl
 		}
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
 		r.ID = types.StringValue(resp.ID)
+		r.Manifest = make([]types.String, 0, len(resp.Manifest))
+		for _, v := range resp.Manifest {
+			r.Manifest = append(r.Manifest, types.StringValue(v))
+		}
 		r.Org = types.StringValue(resp.Org)
 		r.Owners = []tfTypes.EntityOwner{}
 

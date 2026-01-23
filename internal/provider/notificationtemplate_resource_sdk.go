@@ -35,6 +35,10 @@ func (r *NotificationTemplateResourceModel) RefreshFromSharedNotificationTemplat
 		}
 		r.CreatedAt = types.StringPointerValue(typeconvert.TimePointerToStringPointer(resp.CreatedAt))
 		r.ID = types.StringValue(resp.ID)
+		r.Manifest = make([]types.String, 0, len(resp.Manifest))
+		for _, v := range resp.Manifest {
+			r.Manifest = append(r.Manifest, types.StringValue(v))
+		}
 		r.Org = types.StringValue(resp.Org)
 		r.Owners = []tfTypes.EntityOwner{}
 
@@ -164,6 +168,10 @@ func (r *NotificationTemplateResourceModel) ToSharedCreateNotificationTemplateIn
 	for tagsIndex := range r.Tags {
 		tags = append(tags, r.Tags[tagsIndex].ValueString())
 	}
+	manifest := make([]string, 0, len(r.Manifest))
+	for manifestIndex := range r.Manifest {
+		manifest = append(manifest, r.Manifest[manifestIndex].ValueString())
+	}
 	out := shared.CreateNotificationTemplateInput{
 		Name:              name,
 		Type:              typeVar,
@@ -174,6 +182,7 @@ func (r *NotificationTemplateResourceModel) ToSharedCreateNotificationTemplateIn
 		Style:             style,
 		Title:             title,
 		Tags:              tags,
+		Manifest:          manifest,
 	}
 
 	return &out, diags
@@ -228,6 +237,10 @@ func (r *NotificationTemplateResourceModel) ToSharedUpdateNotificationTemplateIn
 	for tagsIndex := range r.Tags {
 		tags = append(tags, r.Tags[tagsIndex].ValueString())
 	}
+	manifest := make([]string, 0, len(r.Manifest))
+	for manifestIndex := range r.Manifest {
+		manifest = append(manifest, r.Manifest[manifestIndex].ValueString())
+	}
 	out := shared.UpdateNotificationTemplateInput{
 		Name:              name,
 		NotificationTitle: notificationTitle,
@@ -237,6 +250,7 @@ func (r *NotificationTemplateResourceModel) ToSharedUpdateNotificationTemplateIn
 		Style:             style,
 		Title:             title,
 		Tags:              tags,
+		Manifest:          manifest,
 	}
 
 	return &out, diags

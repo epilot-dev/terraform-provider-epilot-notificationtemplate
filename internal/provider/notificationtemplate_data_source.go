@@ -35,6 +35,7 @@ type NotificationTemplateDataSourceModel struct {
 	CreatedAt         types.String          `tfsdk:"created_at"`
 	CreatedBy         types.String          `tfsdk:"created_by"`
 	ID                types.String          `tfsdk:"id"`
+	Manifest          []types.String        `tfsdk:"manifest"`
 	Message           types.String          `tfsdk:"message"`
 	Name              types.String          `tfsdk:"name"`
 	NotificationTitle types.String          `tfsdk:"notification_title"`
@@ -98,6 +99,11 @@ func (r *NotificationTemplateDataSource) Schema(ctx context.Context, req datasou
 			"id": schema.StringAttribute{
 				Required:    true,
 				Description: `Unique identifier`,
+			},
+			"manifest": schema.ListAttribute{
+				Computed:    true,
+				ElementType: types.StringType,
+				Description: `Manifest ID used to create/update the entity`,
 			},
 			"message": schema.StringAttribute{
 				Computed:    true,

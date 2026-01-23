@@ -29,13 +29,12 @@ terraform {
   required_providers {
     epilot-notificationtemplate = {
       source  = "epilot-dev/epilot-notificationtemplate"
-      version = "0.13.1"
+      version = "0.14.0"
     }
   }
 }
 
 provider "epilot-notificationtemplate" {
-  epilot_auth = "<YOUR_EPILOT_AUTH>" # Required
   server_url = "..." # Optional
 }
 ```
@@ -51,6 +50,7 @@ Available configuration:
 | Provider Attribute | Description |
 |---|---|
 | `epilot_auth` | Authorization header with epilot OAuth2 bearer token. |
+| `epilot_org` | Overrides the target organization to allow shared tenant access. |
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Data Sources [operations] -->

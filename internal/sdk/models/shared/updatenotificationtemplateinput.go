@@ -19,6 +19,8 @@ type UpdateNotificationTemplateInput struct {
 	Title *string `json:"_title,omitempty"`
 	// Tags for categorization
 	Tags []string `json:"_tags,omitempty"`
+	// Manifest ID used to create/update the entity
+	Manifest []string `json:"_manifest,omitempty"`
 }
 
 func (u *UpdateNotificationTemplateInput) GetName() *string {
@@ -75,4 +77,11 @@ func (u *UpdateNotificationTemplateInput) GetTags() []string {
 		return nil
 	}
 	return u.Tags
+}
+
+func (u *UpdateNotificationTemplateInput) GetManifest() []string {
+	if u == nil {
+		return nil
+	}
+	return u.Manifest
 }

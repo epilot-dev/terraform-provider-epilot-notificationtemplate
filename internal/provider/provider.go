@@ -29,6 +29,7 @@ type EpilotNotificationtemplateProvider struct {
 // EpilotNotificationtemplateProviderModel describes the provider data model.
 type EpilotNotificationtemplateProviderModel struct {
 	EpilotAuth types.String `tfsdk:"epilot_auth"`
+	EpilotOrg  types.String `tfsdk:"epilot_org"`
 	ServerURL  types.String `tfsdk:"server_url"`
 }
 
@@ -42,7 +43,12 @@ func (p *EpilotNotificationtemplateProvider) Schema(ctx context.Context, req pro
 		Attributes: map[string]schema.Attribute{
 			"epilot_auth": schema.StringAttribute{
 				MarkdownDescription: `Authorization header with epilot OAuth2 bearer token.`,
-				Required:            true,
+				Optional:            true,
+				Sensitive:           true,
+			},
+			"epilot_org": schema.StringAttribute{
+				MarkdownDescription: `Overrides the target organization to allow shared tenant access.`,
+				Optional:            true,
 				Sensitive:           true,
 			},
 			"server_url": schema.StringAttribute{
@@ -72,14 +78,11 @@ func (p *EpilotNotificationtemplateProvider) Configure(ctx context.Context, req 
 	security := shared.Security{}
 
 	if !data.EpilotAuth.IsUnknown() {
-		security.EpilotAuth = data.EpilotAuth.ValueString()
+		security.EpilotAuth = data.EpilotAuth.ValueStringPointer()
 	}
 
-	if security.EpilotAuth == "" {
-		resp.Diagnostics.AddError(
-			"Missing Provider Security Configuration",
-			"Provider configuration epilot_auth attribute must be configured.",
-		)
+	if !data.EpilotOrg.IsUnknown() {
+		security.EpilotOrg = data.EpilotOrg.ValueStringPointer()
 	}
 
 	providerHTTPTransportOpts := ProviderHTTPTransportOpts{
