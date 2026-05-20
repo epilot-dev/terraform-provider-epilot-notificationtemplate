@@ -1,0 +1,30 @@
+speakeasyVersion: 1.763.2
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:4743e8b182636d3d52e79586fe0df3f1db7c3a37aa10d1b9b85be296fb70025c
+        sourceBlobDigest: sha256:11f1ccd28941711e5f53443ccb2408d092367cc3300b682181c0c4fa4bee35c6
+        tags:
+            - latest
+            - 1.7.0
+targets:
+    terraform:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:4743e8b182636d3d52e79586fe0df3f1db7c3a37aa10d1b9b85be296fb70025c
+        sourceBlobDigest: sha256:11f1ccd28941711e5f53443ccb2408d092367cc3300b682181c0c4fa4bee35c6
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://docs.api.epilot.io/svc-notification-api.yaml
+            overlays:
+                - location: overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/epilot/epilot/my-source
+    targets:
+        terraform:
+            target: terraform
+            source: my-source
