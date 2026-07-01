@@ -36,6 +36,9 @@ func (g *GetNotificationsV2Request) GetLimit() *int64 {
 	return g.Limit
 }
 
+// #region class-body-getnotificationsv2request
+// #endregion class-body-getnotificationsv2request
+
 // GetNotificationsV2ResponseBody - Success
 type GetNotificationsV2ResponseBody struct {
 	// Base64 encoded cursor to be used for pagination
@@ -72,6 +75,9 @@ func (g *GetNotificationsV2ResponseBody) GetResults() []shared.NotificationItem 
 	}
 	return g.Results
 }
+
+// #region class-body-getnotificationsv2responsebody
+// #endregion class-body-getnotificationsv2responsebody
 
 type GetNotificationsV2Response struct {
 	// HTTP response content type for this operation
@@ -111,3 +117,6 @@ func (g *GetNotificationsV2Response) GetObject() *GetNotificationsV2ResponseBody
 	}
 	return g.Object
 }
+
+// #region class-body-getnotificationsv2response
+// #endregion class-body-getnotificationsv2response
