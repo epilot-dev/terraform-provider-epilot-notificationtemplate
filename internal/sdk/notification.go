@@ -409,6 +409,7 @@ func (s *Notification) CreateNotification(ctx context.Context, request *shared.N
 
 	switch {
 	case httpRes.StatusCode == 202:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -990,6 +991,7 @@ func (s *Notification) MarkAllAsRead(ctx context.Context, opts ...operations.Opt
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1169,6 +1171,7 @@ func (s *Notification) MarkAsRead(ctx context.Context, request operations.MarkAs
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	default:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/internal/utils"
 	"time"
 )
@@ -49,6 +51,32 @@ func (m *Message) GetDe() *string {
 	return m.De
 }
 
+type AllowedChannels string
+
+const (
+	AllowedChannelsEmail AllowedChannels = "email"
+	AllowedChannelsInApp AllowedChannels = "in_app"
+)
+
+func (e AllowedChannels) ToPointer() *AllowedChannels {
+	return &e
+}
+func (e *AllowedChannels) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		fallthrough
+	case "in_app":
+		*e = AllowedChannels(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AllowedChannels: %v", v)
+	}
+}
+
 type NotificationItem struct {
 	ID             *float64   `json:"id,omitempty"`
 	NotificationID *float64   `json:"notification_id,omitempty"`
@@ -66,6 +94,8 @@ type NotificationItem struct {
 	Caller           *NotificationCallerContext `json:"caller,omitempty"`
 	Operations       []EntityOperation          `json:"operations,omitempty"`
 	ForceNotifyUsers map[string]any             `json:"force_notify_users,omitempty"`
+	// Optional delivery-channel ceiling. When present, delivery is restricted to the intersection of this set and each recipient's own notification preferences — it can only NARROW delivery, never force a channel on. Absent means no restriction (recipient preferences and per-type defaults apply as before). An empty array suppresses all channels.
+	AllowedChannels []AllowedChannels `json:"allowed_channels,omitempty"`
 }
 
 func (n NotificationItem) MarshalJSON() ([]byte, error) {
@@ -168,4 +198,11 @@ func (n *NotificationItem) GetForceNotifyUsers() map[string]any {
 		return nil
 	}
 	return n.ForceNotifyUsers
+}
+
+func (n *NotificationItem) GetAllowedChannels() []AllowedChannels {
+	if n == nil {
+		return nil
+	}
+	return n.AllowedChannels
 }

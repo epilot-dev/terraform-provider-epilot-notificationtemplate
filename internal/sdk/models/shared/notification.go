@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-notificationtemplate/internal/sdk/internal/utils"
 	"time"
 )
@@ -49,6 +51,32 @@ func (n *NotificationMessage) GetDe() *string {
 	return n.De
 }
 
+type NotificationAllowedChannels string
+
+const (
+	NotificationAllowedChannelsEmail NotificationAllowedChannels = "email"
+	NotificationAllowedChannelsInApp NotificationAllowedChannels = "in_app"
+)
+
+func (e NotificationAllowedChannels) ToPointer() *NotificationAllowedChannels {
+	return &e
+}
+func (e *NotificationAllowedChannels) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		fallthrough
+	case "in_app":
+		*e = NotificationAllowedChannels(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NotificationAllowedChannels: %v", v)
+	}
+}
+
 type Notification struct {
 	NotificationID *float64   `json:"notification_id,omitempty"`
 	Timestamp      *time.Time `json:"timestamp,omitempty"`
@@ -64,7 +92,9 @@ type Notification struct {
 	Caller           *NotificationCallerContext `json:"caller,omitempty"`
 	Operations       []EntityOperation          `json:"operations,omitempty"`
 	ForceNotifyUsers map[string]any             `json:"force_notify_users,omitempty"`
-	ReadState        *bool                      `json:"read_state,omitempty"`
+	// Optional delivery-channel ceiling. When present, delivery is restricted to the intersection of this set and each recipient's own notification preferences — it can only NARROW delivery, never force a channel on. Absent means no restriction (recipient preferences and per-type defaults apply as before). An empty array suppresses all channels.
+	AllowedChannels []NotificationAllowedChannels `json:"allowed_channels,omitempty"`
+	ReadState       *bool                         `json:"read_state,omitempty"`
 	// The person who is the corresponding event recipient.
 	VisibilityUserIds []string `json:"visibility_user_ids,omitempty"`
 }
@@ -155,6 +185,13 @@ func (n *Notification) GetForceNotifyUsers() map[string]any {
 		return nil
 	}
 	return n.ForceNotifyUsers
+}
+
+func (n *Notification) GetAllowedChannels() []NotificationAllowedChannels {
+	if n == nil {
+		return nil
+	}
+	return n.AllowedChannels
 }
 
 func (n *Notification) GetReadState() *bool {

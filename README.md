@@ -56,9 +56,10 @@ Available configuration:
 <!-- Start Available Resources and Data Sources [operations] -->
 ## Available Resources and Data Sources
 
-### Resources
+### Managed Resources
 
 * [epilot-notificationtemplate_notification_template](docs/resources/notification_template.md)
+
 ### Data Sources
 
 * [epilot-notificationtemplate_notification_template](docs/data-sources/notification_template.md)
